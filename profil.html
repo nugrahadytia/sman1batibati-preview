@@ -1,0 +1,698 @@
+<!doctype html>
+<!--
+  ============================================================================
+  HALAMAN PROFIL — SMA NEGERI 1 BATI-BATI
+  Berisi: visi & misi sekolah + direktori guru dan tenaga kependidikan.
+
+  Gaya (warna, huruf, bentuk) ada di assets/style.css, dipakai bersama
+  index.html. Jangan menyalin CSS ke dalam berkas ini.
+
+  ---------------------------------------------------------------------------
+  DATA GURU & STAF
+  Daftar diambil dari ekspor Dapodik sekolah. HANYA nama, gelar, dan jabatan
+  yang ditampilkan. Kolom identitas pribadi SENGAJA TIDAK diikutkan:
+  NIK, NIP, NUPTK, tempat lahir, tanggal lahir. Jangan pernah menambahkan
+  kolom-kolom itu ke halaman ini.
+
+  Kalau ada perubahan guru/staf, perbarui lewat kelola-berita.html? Tidak —
+  direktori ini diperbarui dengan menjalankan ulang skrip pengolah Dapodik.
+  ============================================================================
+-->
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Menandai bahwa JavaScript hidup. CSS memakai ini: animasi "muncul saat
+     digulir" hanya disembunyikan kalau kelas ini ada. Kalau JS mati, seluruh
+     isi halaman tetap terlihat. -->
+<script>document.documentElement.className+=" js";</script>
+<title>Profil Sekolah — SMA Negeri 1 Bati-bati</title>
+<meta name="description" content="Visi, misi, serta daftar guru dan tenaga kependidikan SMA Negeri 1 Bati-bati, Kabupaten Tanah Laut, Kalimantan Selatan.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Profil Sekolah — SMA Negeri 1 Bati-bati">
+<meta property="og:description" content="Visi, misi, serta daftar guru dan tenaga kependidikan.">
+<meta property="og:image" content="assets/og-image.png">
+<link rel="icon" href="assets/favicon-64.png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body id="top">
+
+<a class="skip" href="#konten">Lewati ke konten utama</a>
+
+<header class="site-head" id="head">
+  <div class="wrap head-in">
+    <a class="brand" href="index.html" aria-label="SMA Negeri 1 Bati-bati — beranda">
+      <img class="brand__logo" src="assets/logo-sman1-batibati.png" alt="" width="39" height="48">
+      <span class="brand__text"><b>SMA Negeri 1</b><span>Bati-bati</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Navigasi utama">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#program">Akademik</a></li>
+        <li><a href="index.html#prestasi">Berita</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+        <li class="nav-lain"><a href="profil.html" aria-current="page">Profil</a></li>
+      </ul>
+    </nav>
+
+    <div class="head-act">
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Buka menu">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mnav" id="mnav">
+    <div class="wrap">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#program">Akademik</a></li>
+        <li><a href="index.html#prestasi">Berita</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+        <li><a href="profil.html" aria-current="page">Profil</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="konten">
+
+  <!-- ===================== KEPALA HALAMAN ===================== -->
+  <div class="page-hero page-hero--surface">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Remah roti">
+        <a href="index.html">Beranda</a><i aria-hidden="true">/</i><span>Profil</span>
+      </nav>
+      <span class="eyebrow">Profil sekolah</span>
+      <h1>Mengenal SMA Negeri 1 Bati-bati lebih dekat</h1>
+      <p class="lede">Sekolah menengah atas negeri di Kecamatan Bati-bati, Kabupaten Tanah Laut, Kalimantan Selatan. Halaman ini memuat visi dan misi sekolah, serta daftar guru dan tenaga kependidikan yang mengajar dan menjaga sekolah ini setiap hari.</p>
+    </div>
+  </div>
+
+  <!-- ===================== VISI ===================== -->
+  <section aria-labelledby="visi-h">
+    <div class="wrap">
+      <!-- VISI & MISI RESMI SMAN 1 BATI-BATI.
+           Naskah ini dari sekolah. Kalau ada pembaruan, ganti kalimat di
+           dalam <blockquote> (visi) dan kartu-kartu .misi-card (misi).
+           Grid misi = dua kolom di layar lebar, satu kolom di layar kecil. -->
+      <div class="reveal">
+        <span class="eyebrow">Visi &amp; misi</span>
+        <h2 id="visi-h" style="font-size:clamp(1.45rem,2.8vw,2rem);font-weight:800;letter-spacing:-.03em;margin-top:12px">Arah yang kami tuju</h2>
+      </div>
+
+      <div class="visi-box reveal" data-d="1" style="margin-top:clamp(22px,3vw,32px)">
+        <div class="blok-label">Visi</div>
+        <blockquote>Terwujudnya sekolah yang <em>Berkarakter, Unggul, dan Asri (BUNGAS)</em>, yakni lulusan yang Berkarakter Profil Pelajar Pancasila dan unggul dalam penguasaan ilmu pengetahuan, teknologi, dan seni di era globalisasi dalam lingkungan belajar yang asri.</blockquote>
+      </div>
+
+      <div class="reveal" data-d="2" style="margin-top:clamp(26px,3.4vw,38px)">
+        <div class="blok-label">Misi</div>
+        <div class="misi-grid">
+          <div class="misi-card"><span class="no">01</span><p>Meningkatkan kegiatan Gerakan Literasi Sekolah (GLS) dan pembiasaan keagamaan di lingkungan sekolah.</p></div>
+          <div class="misi-card"><span class="no">02</span><p>Menyelenggarakan pembelajaran yang berkualitas dalam rangka pengembangan karakter profil pelajar Pancasila sebagai pilar utama pendidikan.</p></div>
+          <div class="misi-card"><span class="no">03</span><p>Membekali kecakapan peserta didik yang berkualitas dan unggul dalam pengembangan ilmu pengetahuan, teknologi, dan seni di era globalisasi.</p></div>
+          <div class="misi-card"><span class="no">04</span><p>Menciptakan lingkungan sekolah yang bersih dan ASRI (Aman, Sehat, Rindang, dan Indah).</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== GURU & STAF ===================== -->
+  <section id="guru-staf" style="background:var(--surface);border-top:1px solid var(--line)" aria-labelledby="staf-h">
+    <div class="wrap">
+      <div class="staf-head">
+        <div class="reveal">
+          <span class="eyebrow">Guru &amp; tenaga kependidikan</span>
+          <h2 id="staf-h" style="font-size:clamp(1.45rem,2.8vw,2rem);font-weight:800;letter-spacing:-.03em;margin-top:12px">Orang-orang di balik sekolah ini</h2>
+        </div>
+        <div class="pencarian reveal" data-d="1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <label class="sr" for="cari" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Cari nama atau mata pelajaran</label>
+          <input type="search" id="cari" placeholder="Cari nama atau mata pelajaran…" autocomplete="off">
+        </div>
+      </div>
+
+            <div class="staf-grup reveal">
+        <div class="staf-grup__judul"><h3>Pimpinan</h3><span class="jumlah">3 orang</span></div>
+        <div class="pim-grid">
+      <article class="pim-card" data-cari="birhasani guru bahasa indonesia bahasa indonesia kepala sekolah">
+        <span class="ava ava--lg" style="--c:var(--brand-btn)" aria-hidden="true">BI</span>
+        <b>Birhasani, S.Pd</b>
+        <span class="peran">Kepala Sekolah</span>
+      </article>
+      <article class="pim-card" data-cari="rahmadi guru bahasa arab bahasa arab wakil kepala sekolah sarpras">
+        <span class="ava ava--lg" style="--c:var(--teal-deep)" aria-hidden="true">RA</span>
+        <b>Rahmadi, S.Pd.I</b>
+        <span class="peran">Wakil Kepala Sekolah Sarpras</span>
+      </article>
+      <article class="pim-card" data-cari="siti zubaidah guru bimbingan konseling bimbingan dan konseling (konselor) wakil kepala sekolah kesiswaan">
+        <span class="ava ava--lg" style="--c:var(--green-ink)" aria-hidden="true">SZ</span>
+        <b>Siti Zubaidah, S.Pd</b>
+        <span class="peran">Wakil Kepala Sekolah Kesiswaan</span>
+      </article>
+        </div>
+      </div>
+      <div class="staf-grup reveal">
+        <div class="staf-grup__judul"><h3>Guru</h3><span class="jumlah">39 orang</span></div>
+        <div class="staf-grid">
+      <article class="staf-card" data-cari="ahmad rangga harianto guru pjok pendidikan jasmani, olahraga, dan kesehatan ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">AR</span>
+        <span>
+          <b>Ahmad Rangga Harianto, S.Pd</b>
+          <span class="peran">Guru PJOK</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="amelia guru sosiologi sosiologi ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">AM</span>
+        <span>
+          <b>Amelia, S.Pd</b>
+          <span class="peran">Guru Sosiologi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="ani erminani guru biologi biologi ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">AE</span>
+        <span>
+          <b>Ani Erminani, S.P</b>
+          <span class="peran">Guru Biologi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="aulia dina lestari guru ppkn pendidikan kewarganegaraan (pkn) ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">AD</span>
+        <span>
+          <b>Aulia Dina Lestari, S.Pd</b>
+          <span class="peran">Guru PPKN</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="dalilah husna guru ppkn pendidikan kewarganegaraan (pkn), pendidikan pancasila dan kewarganegaraan ">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">DH</span>
+        <span>
+          <b>Dalilah Husna, S.Pd</b>
+          <span class="peran">Guru PPKN</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="debby paulina guru seni budaya administrasi pendidikan ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">DP</span>
+        <span>
+          <b>Debby Paulina, S.Pd</b>
+          <span class="peran">Guru Seni Budaya</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="desy sukawaty guru ekonomi ekonomi ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">DS</span>
+        <span>
+          <b>Desy Sukawaty, S.Pd</b>
+          <span class="peran">Guru Ekonomi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="elma khairina guru sejarah sejarah ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">EK</span>
+        <span>
+          <b>Elma Khairina, S.Pd</b>
+          <span class="peran">Guru Sejarah</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="fikri agustianoor guru matematika matematika ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">FA</span>
+        <span>
+          <b>Fikri Agustianoor, S.Pd</b>
+          <span class="peran">Guru Matematika</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="hamdiah guru bimbingan konseling bimbingan dan konseling, keterampilan ">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">HA</span>
+        <span>
+          <b>Hamdiah, S.Pd</b>
+          <span class="peran">Guru Bimbingan Konseling</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="hasratin nor guru kimia kimia ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">HN</span>
+        <span>
+          <b>Hasratin Nor, S.Pd</b>
+          <span class="peran">Guru Kimia</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="helda ariyati guru agama islam pendidikan agama islam ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">HA</span>
+        <span>
+          <b>Helda Ariyati, S.Pd.I</b>
+          <span class="peran">Guru Agama Islam</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="jauhariah guru matematika pendidikan matematika ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">JA</span>
+        <span>
+          <b>Jauhariah, S.Pd</b>
+          <span class="peran">Guru Matematika</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="khairun guru tik teknologi informasi dan komunikasi (tik), ekonomi, kewirausahaan ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">KH</span>
+        <span>
+          <b>Khairun, S.Kom</b>
+          <span class="peran">Guru TIK</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="miftahul jannah guru sosiologi sosiologi bendahara bos/bosp">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">MJ</span>
+        <span>
+          <b>Miftahul Jannah, S.Pd</b>
+          <span class="peran">Guru Sosiologi</span>
+          <span class="tambahan">Bendahara BOS/BOSP</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="moh alimakki guru prakarya dan kewirausahaan ilmu perpustakaan, teknik komputer dan jaringan kepala perpustakaan">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">MA</span>
+        <span>
+          <b>Moh Alimakki, S.IP</b>
+          <span class="peran">Guru Prakarya Dan Kewirausahaan</span>
+          <span class="tambahan">Kepala Perpustakaan</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="muhammad aditya nugraha guru tik informatika ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">MA</span>
+        <span>
+          <b>Muhammad Aditya Nugraha, S.Kom</b>
+          <span class="peran">Guru TIK</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="muhammad zaien arifin guru pjok pendidikan jasmani dan kesehatan ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">MZ</span>
+        <span>
+          <b>Muhammad Zaien Arifin, S.Pd</b>
+          <span class="peran">Guru PJOK</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="ngatijo guru bahasa indonesia pendidikan bahasa dan sastra indonesia ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">NG</span>
+        <span>
+          <b>Ngatijo, S.Pd</b>
+          <span class="peran">Guru Bahasa Indonesia</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="noor rusmiyati guru bahasa indonesia bahasa indonesia ">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">NR</span>
+        <span>
+          <b>Noor Rusmiyati, S.Pd</b>
+          <span class="peran">Guru Bahasa Indonesia</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="noorwardah guru agama islam pendidikan agama islam ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">NO</span>
+        <span>
+          <b>Noorwardah, S.Ag</b>
+          <span class="peran">Guru Agama Islam</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="nurmila guru kimia lainnya ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">NU</span>
+        <span>
+          <b>Nurmila, S.T</b>
+          <span class="peran">Guru Kimia</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="nurwidianto guru bahasa indonesia bahasa indonesia ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">NU</span>
+        <span>
+          <b>Nurwidianto, S.Pd</b>
+          <span class="peran">Guru Bahasa Indonesia</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="pancasari indah murtianingrum guru ekonomi ekonomi ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">PI</span>
+        <span>
+          <b>Pancasari Indah Murtianingrum, S.Pd</b>
+          <span class="peran">Guru Ekonomi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="rahmina guru matematika matematika ">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">RA</span>
+        <span>
+          <b>Rahmina, S.Pd</b>
+          <span class="peran">Guru Matematika</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="riska alfiyani guru matematika matematika ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">RA</span>
+        <span>
+          <b>Riska Alfiyani, S.Pd</b>
+          <span class="peran">Guru Matematika</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="sana alyani guru agama islam pendidikan agama islam ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">SA</span>
+        <span>
+          <b>Sana Alyani, S.Pd.I</b>
+          <span class="peran">Guru Agama Islam</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="sih rahayu guru biologi biologi ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">SR</span>
+        <span>
+          <b>Sih Rahayu, S.Pd</b>
+          <span class="peran">Guru Biologi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="sofiani guru pjok pendidikan jasmani dan kesehatan ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">SO</span>
+        <span>
+          <b>Sofiani, S.Pd</b>
+          <span class="peran">Guru PJOK</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="sumarno guru fisika fisika ">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">SU</span>
+        <span>
+          <b>Sumarno, S.Pd, M.Pd</b>
+          <span class="peran">Guru Fisika</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="susi rohana guru bimbingan konseling bimbingan dan konseling (konselor) kepala humas">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">SR</span>
+        <span>
+          <b>Susi Rohana, S.Pd</b>
+          <span class="peran">Guru Bimbingan Konseling</span>
+          <span class="tambahan">Kepala Humas</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="syarif rakhman guru bahasa inggris bahasa inggris ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">SR</span>
+        <span>
+          <b>Syarif Rakhman, S.Pd, M.Pd</b>
+          <span class="peran">Guru Bahasa Inggris</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="syaupi rahman guru geografi geografi ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">SR</span>
+        <span>
+          <b>Syaupi Rahman, S.Pd</b>
+          <span class="peran">Guru Geografi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="tea meftha sarah guru geografi geografi ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">TM</span>
+        <span>
+          <b>Tea Meftha Sarah, S.Pd</b>
+          <span class="peran">Guru Geografi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="tri astutik guru ekonomi ekonomi ">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">TA</span>
+        <span>
+          <b>Tri Astutik, S.Pd</b>
+          <span class="peran">Guru Ekonomi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="vida ismaya guru bahasa inggris bahasa inggris ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">VI</span>
+        <span>
+          <b>Vida Ismaya, S.Pd</b>
+          <span class="peran">Guru Bahasa Inggris</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="yetty winah guru geografi geografi ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">YW</span>
+        <span>
+          <b>Yetty Winah, S.pd</b>
+          <span class="peran">Guru Geografi</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="yulita safitri guru fisika pendidikan fisika ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">YS</span>
+        <span>
+          <b>Yulita Safitri, S.Pd</b>
+          <span class="peran">Guru Fisika</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="yurida guru sejarah sejarah ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">YU</span>
+        <span>
+          <b>Yurida, S.H.</b>
+          <span class="peran">Guru Sejarah</span>
+        </span>
+      </article>
+        </div>
+      </div>
+      <div class="staf-grup reveal">
+        <div class="staf-grup__judul"><h3>Tenaga Kependidikan</h3><span class="jumlah">13 orang</span></div>
+        <div class="staf-grid">
+      <article class="staf-card" data-cari="ahmad ansari penjaga sekolah  ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">AA</span>
+        <span>
+          <b>Ahmad Ansari</b>
+          <span class="peran">Penjaga Sekolah</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="dahlan tenaga administrasi sekolah  ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">DA</span>
+        <span>
+          <b>Dahlan, S.Pd</b>
+          <span class="peran">Tenaga Administrasi Sekolah</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="dwi sandranita tenaga administrasi sekolah  ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">DS</span>
+        <span>
+          <b>Dwi Sandranita</b>
+          <span class="peran">Tenaga Administrasi Sekolah</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="fahriani tenaga administrasi sekolah  bendahara bosda">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">FA</span>
+        <span>
+          <b>Fahriani, S.Pd</b>
+          <span class="peran">Tenaga Administrasi Sekolah</span>
+          <span class="tambahan">Bendahara BOSDA</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="febry prasetya adi tenaga administrasi sekolah  ">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">FP</span>
+        <span>
+          <b>Febry Prasetya Adi, S.Pd</b>
+          <span class="peran">Tenaga Administrasi Sekolah</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="henny faulina tenaga administrasi sekolah  ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">HF</span>
+        <span>
+          <b>Henny Faulina, S.P</b>
+          <span class="peran">Tenaga Administrasi Sekolah</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="jatmika tukang kebun  ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">JA</span>
+        <span>
+          <b>Jatmika</b>
+          <span class="peran">Tukang Kebun</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="jumriah pesuruh/office boy  ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">JU</span>
+        <span>
+          <b>Jumriah</b>
+          <span class="peran">Pesuruh/Office Boy</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="khairati dewi tenaga administrasi sekolah  ">
+        <span class="ava" style="--c:var(--brand-btn)" aria-hidden="true">KD</span>
+        <span>
+          <b>Khairati Dewi</b>
+          <span class="peran">Tenaga Administrasi Sekolah</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="lia marlia pesuruh/office boy  ">
+        <span class="ava" style="--c:var(--teal-deep)" aria-hidden="true">LM</span>
+        <span>
+          <b>Lia Marlia</b>
+          <span class="peran">Pesuruh/Office Boy</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="muna aulia wakil kepala perpustakaan  ">
+        <span class="ava" style="--c:var(--green-ink)" aria-hidden="true">MA</span>
+        <span>
+          <b>Muna Aulia, S.IP</b>
+          <span class="peran">Wakil Kepala Perpustakaan</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="suhaimi penjaga sekolah  ">
+        <span class="ava" style="--c:var(--gold-ink)" aria-hidden="true">SU</span>
+        <span>
+          <b>Suhaimi</b>
+          <span class="peran">Penjaga Sekolah</span>
+        </span>
+      </article>
+      <article class="staf-card" data-cari="taufik sholeh petugas keamanan  ">
+        <span class="ava" style="--c:var(--red-ink)" aria-hidden="true">TS</span>
+        <span>
+          <b>Taufik Sholeh</b>
+          <span class="peran">Petugas Keamanan</span>
+        </span>
+      </article>
+        </div>
+      </div>
+
+      <p class="kosong" id="tak-ada">Tidak ada nama yang cocok dengan pencarian itu.</p>
+    </div>
+  </section>
+
+  <!-- ===================== AJAKAN ===================== -->
+  <section aria-labelledby="ajak-h">
+    <div class="wrap" style="text-align:center;max-width:62ch;margin-inline:auto">
+      <span class="eyebrow" style="justify-content:center">Ada pertanyaan?</span>
+      <h2 id="ajak-h" style="font-size:clamp(1.4rem,2.7vw,1.95rem);font-weight:800;letter-spacing:-.03em;margin-top:12px">Kami senang menjawabnya</h2>
+      <p class="lede" style="margin-inline:auto">Untuk pertanyaan seputar pendaftaran, akademik, atau kerja sama, hubungi sekolah lewat kanal resmi.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:24px">
+        <a class="btn btn--primary" href="index.html#kontak">Lihat kontak sekolah</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html" aria-label="SMA Negeri 1 Bati-bati — beranda">
+          <img class="brand__logo" src="assets/logo-sman1-batibati.png" alt="" width="39" height="48">
+          <span class="brand__text"><b>SMA Negeri 1</b><span>Bati-bati</span></span>
+        </a>
+        <p>Sekolah menengah atas negeri di Kecamatan Bati-bati, Kabupaten Tanah Laut, Kalimantan Selatan.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/sman1bati_bati" target="_blank" rel="noopener" aria-label="Instagram sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.youtube.com/@smabat_bungas" target="_blank" rel="noopener" aria-label="Kanal YouTube sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5l5 2.5-5 2.5v-5Z"/></svg></a>
+          <a href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener" aria-label="WhatsApp sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-8.6-6L3 21l6-1.4A9 9 0 0 0 12 21Z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h3>Jelajahi</h3>
+        <ul>
+          <li><a href="index.html#program">Mata pelajaran pilihan</a></li>
+          <li><a href="index.html#beasiswa">Info beasiswa (PIP)</a></li>
+          <li><a href="index.html#ekskul">Ekstrakurikuler</a></li>
+          <li><a href="index.html#tahap">Tahapan belajar</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Tentang</h3>
+        <ul>
+          <li><a href="profil.html">Visi &amp; misi</a></li>
+          <li><a href="profil.html#guru-staf">Guru &amp; tenaga kependidikan</a></li>
+          <li><a href="index.html#fasilitas">Sarana prasarana</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Hubungi</h3>
+        <ul>
+          <li><a href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:sman1bati.bati@gmail.com">sman1bati.bati@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <p>© <span id="yr">2026</span> SMA Negeri 1 Bati-bati. Seluruh hak cipta dilindungi.</p>
+      <ul>
+        <li><a href="kebijakan.html#privasi">Kebijakan privasi</a></li>
+        <li><a href="kebijakan.html#syarat">Syarat penggunaan</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+        <li><a href="#top">Kembali ke atas</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---- tahun berjalan ---- */
+  var yr = document.getElementById("yr");
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---- menu mobile ---- */
+  var burger = document.getElementById("burger");
+  var mnav = document.getElementById("mnav");
+  if (burger && mnav) {
+    var tutup = function () {
+      mnav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded", "false");
+      burger.setAttribute("aria-label", "Buka menu");
+    };
+    burger.addEventListener("click", function () {
+      var terbuka = mnav.classList.toggle("is-open");
+      burger.setAttribute("aria-expanded", terbuka ? "true" : "false");
+      burger.setAttribute("aria-label", terbuka ? "Tutup menu" : "Buka menu");
+    });
+    mnav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) tutup();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && mnav.classList.contains("is-open")) {
+        tutup();
+        burger.focus();
+      }
+    });
+  }
+
+  /* ---- animasi muncul saat digulir ---- */
+  var blok = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var amat = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); amat.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -60px 0px", threshold: 0.06 });
+    blok.forEach(function (b) { amat.observe(b); });
+  } else {
+    blok.forEach(function (b) { b.classList.add("in"); });
+  }
+
+  /* ---- pencarian nama / mata pelajaran ---- */
+  var cari = document.getElementById("cari");
+  var takAda = document.getElementById("tak-ada");
+  if (cari) {
+    var kartu = [].slice.call(document.querySelectorAll(".staf-card, .pim-card"));
+    var grup = [].slice.call(document.querySelectorAll(".staf-grup"));
+    cari.addEventListener("input", function () {
+      var q = cari.value.trim().toLowerCase();
+      var tampil = 0;
+      kartu.forEach(function (k) {
+        var cocok = !q || (k.getAttribute("data-cari") || k.textContent).indexOf(q) !== -1;
+        k.hidden = !cocok;
+        if (cocok) tampil++;
+      });
+      grup.forEach(function (g) {
+        // jumlah total dibaca dari seluruh kartu di grup itu, termasuk yang
+        // sedang disembunyikan, jadi angkanya tidak perlu disimpan terpisah.
+        var semua = g.querySelectorAll(".staf-card, .pim-card").length;
+        var sisa = g.querySelectorAll(".staf-card:not([hidden]), .pim-card:not([hidden])").length;
+        g.hidden = sisa === 0;
+        // Label jumlah ikut menyesuaikan. Tanpa ini, saat mencari "matematika"
+        // judulnya tetap menulis "39 orang" padahal yang tampil cuma 4 —
+        // pengunjung mengira pencariannya rusak.
+        var label = g.querySelector(".jumlah");
+        if (label) {
+          label.textContent = q
+            ? sisa + " dari " + semua + " orang"
+            : semua + " orang";
+        }
+      });
+      takAda.classList.toggle("tampil", tampil === 0);
+    });
+  }
+})();
+</script>
+</body>
+</html>

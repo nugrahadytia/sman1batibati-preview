@@ -1,0 +1,764 @@
+<!doctype html>
+<!--
+  ============================================================================
+  WEBSITE SEKOLAH — SMA NEGERI 1 BATI-BATI
+  Kabupaten Tanah Laut, Kalimantan Selatan
+  Satu file HTML mandiri (HTML + CSS + JS). Buka langsung di browser.
+
+  GAYA: mengacu pada referensi desain (blob warna cerah, tipografi sans tebal,
+  kartu rail, langkah bernomor, CTA besar). WARNA diambil dari logo sekolah:
+  oranye perisai #E57917, emas bingkai #F5CE00, hijau padi & kapas #148E4C,
+  teal cincin #0D8A80, merah cincin #DC2B24.
+
+  ---------------------------------------------------------------------------
+  SUDAH NYATA (dikonfirmasi sekolah):
+  · Nama sekolah dan logo (assets/logo-sman1-batibati.png)
+  · Lokasi: Kec. Bati-bati, Kab. Tanah Laut, Kalimantan Selatan
+  · Alamat: Jl. Ahmad Yani Km. 33,3, Desa Nusa Indah, Kec. Bati-bati
+  · Ejaan nama: "Bati-bati" (sudah dikonfirmasi, jangan diubah)
+  · Kontak: WhatsApp Business lewat tautan wa.me/message/DO777VAL4T66P1
+    (nomor teleponnya tidak ditampilkan di halaman) dan email
+    sman1bati.bati@gmail.com
+  · Telepon (0512) 555-0007 SUDAH DIHAPUS 21 September 2026 —
+    layanannya tidak aktif (keterangan sekolah). Jangan dipasang lagi,
+    termasuk di data terstruktur JSON-LD di akhir berkas ini.
+  · Sosial: instagram.com/sman1bati_bati · youtube.com/@smabat_bungas
+  · Bagian beasiswa (PIP) di #beasiswa — sumbernya laman resmi PIP
+    (pip.kemendikdasmen.go.id) + keterangan sekolah: PIP dilanjutkan untuk
+    peserta didik yang sudah menerimanya sejak SMP, dan sekolah membantu
+    mengusulkan yang belum menerima. Besaran bantuan sengaja tidak ditulis.
+
+  MASIH CONTOH — perlu dicek/diganti:
+  1. FOTO          → 3 slot sudah terisi di assets/, TAPI isinya ILUSTRASI
+                     hasil AI, bukan foto asli sekolah. Karena itu alt-nya
+                     berbunyi "Ilustrasi…". Kalau sudah ada foto asli, ganti
+                     saja berkasnya (kelas .shot--hero / --tahap / --faskes
+                     sudah membawa bentuk blob, rasio, dan bayangannya).
+  2. ANGKA & KLAIM → akreditasi, jumlah siswa, guru, ekskul (strip angka +
+                     2 kartu melayang di hero).
+  3. TAHAPAN       → 3 tahap kelas X–XII di #tahap.
+  4. KABAR SEKOLAH → 8 baris di #news-list. Empat teratas selalu tampil,
+                     sisanya muncul saat "Lihat semua" diklik. MENAMBAH BERITA:
+                     sisipkan satu <div class="news-row"> baru di urutan paling
+                     atas — 4 baris teratas otomatis jadi yang tampil.
+                     Kalau berita punya tautan asli, pakai <a class="news-row"
+                     href="..."> sebagai gantinya.
+                     Kalau berita ≤ 4 baris, tombolnya sembunyi sendiri.
+
+  ATURAN TAUTAN: jangan pernah memakai href="#". Tautan seperti itu membuat
+  halaman melompat ke paling atas saat diklik. Kalau tujuannya belum ada,
+  jangan dipasang sama sekali.
+
+  CATATAN TESTIMONI: bagian testimoni pernah ada di sini dengan 3 kutipan
+  contoh (nama dan isinya karangan). Bagian itu DIHAPUS karena testimoni
+  palsu berisiko — apalagi ada namanya. Kalau nanti mau dipasang lagi,
+  ISI HANYA DENGAN TESTIMONI ASLI (minta izin orangnya dulu), dan gaya
+  tampilannya masih tersimpan di assets/style.css pada bagian .testi/.tcards/.tcard.
+
+  CATATAN: seluruh isi SPMB / penerimaan murid baru SUDAH DIHAPUS dari
+  halaman ini. Kalau masa penerimaan datang lagi, yang perlu ditambahkan:
+  pengumuman di <span class="eyebrow"> hero, tombol ajakan di hero, dan
+  satu bagian alur pendaftaran (contoh lama bisa dibuat ulang).
+  ============================================================================
+-->
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Menandai bahwa JavaScript hidup. CSS memakai ini: animasi "muncul saat
+     digulir" hanya disembunyikan kalau kelas ini ada. Kalau JS mati, seluruh
+     isi halaman tetap terlihat. -->
+<script>document.documentElement.className+=" js";</script>
+<title>SMA Negeri 1 Bati-bati — Sekolah yang Menyiapkan Anak untuk Hidup</title>
+<meta name="description" content="SMA Negeri 1 Bati-bati, Kabupaten Tanah Laut, Kalimantan Selatan. Akademik yang kuat, pembinaan karakter, dan proyek nyata.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="SMA Negeri 1 Bati-bati">
+<meta property="og:description" content="Akademik yang kuat, karakter yang tumbuh, karya yang nyata.">
+<meta property="og:image" content="assets/og-image.png">
+<!-- og:image di atas masih jalur relatif. Setelah website dipasang di domain,
+     ganti jadi URL lengkap, mis. https://sman1batibati.sch.id/assets/og-image.png
+     — Facebook/WhatsApp tidak bisa membaca jalur relatif. -->
+<link rel="icon" href="assets/favicon-64.png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body id="top">
+<a class="skip" href="#konten">Lewati ke konten utama</a>
+
+<!-- ===================== HEADER ===================== -->
+<header class="site-head" id="head">
+  <div class="wrap head-in">
+    <a class="brand" href="#top" aria-label="SMA Negeri 1 Bati-bati — beranda">
+      <img class="brand__logo" src="assets/logo-sman1-batibati.png" alt="" width="39" height="48">
+      <span class="brand__text"><b>SMA Negeri 1</b><span>Bati-bati</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#top">Beranda</a></li>
+        <li><a href="#program">Akademik</a></li>
+        <li><a href="#prestasi">Berita</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li class="nav-lain"><a href="profil.html">Profil</a></li>
+      </ul>
+    </nav>
+
+    <div class="head-act">
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Buka menu">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mnav" id="mnav">
+    <div class="wrap">
+      <ul>
+        <li><a href="#top">Beranda</a></li>
+        <li><a href="#program">Akademik</a></li>
+        <li><a href="#prestasi">Berita</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="konten">
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow">Sekolah negeri di Kabupaten Tanah Laut</span>
+        <h1 id="hero-h">Menyiapkan anak untuk <em>hidup</em>, bukan hanya untuk ujian.</h1>
+        <p class="lede">Di SMA Negeri 1 Bati-bati, akademik yang kuat berjalan bersama pembinaan karakter dan proyek nyata lintas mata pelajaran. Setiap siswa <strong>dibimbing sejak kelas X sampai benar-benar siap</strong> melanjutkan kuliah maupun masuk dunia kerja.</p>
+
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#program">
+            Kenali sekolah kami
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#kontak">Hubungi kami</a>
+        </div>
+
+        <p class="hero-note">
+          <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Terakreditasi A</span>
+          <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Kurikulum Merdeka</span>
+          <span><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Program beasiswa</span>
+        </p>
+      </div>
+
+      <div class="hero-art reveal in" data-d="1">
+        <!-- SLOT FOTO 1 -->
+        <img class="shot shot--hero" src="assets/foto-suasana-belajar.webp" alt="Ilustrasi suasana belajar di kelas" width="1352" height="1163">
+
+        <div class="float-card float-card--a">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0V4Z"/><path d="M8 5H5v2a3 3 0 0 0 3 3M16 5h3v2a3 3 0 0 1-3 3"/><path d="M12 13v4M9 21h6"/></svg>
+          <span>Terakreditasi A<small>BAN-S/M</small></span>
+        </div>
+        <div class="float-card float-card--b">
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.5a3.2 3.2 0 0 1 0 6M17.5 20a5.5 5.5 0 0 0-2.2-4.4"/></svg>
+          <span>814 siswa aktif<small>24 rombel, kelas X–XII</small></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STRIP ANGKA -->
+    <div class="wrap stats">
+      <div class="stats-in reveal">
+        <div class="stat"><b>A</b><span>Akreditasi BAN-S/M</span></div>
+        <div class="stat"><b>16</b><span>Ekstrakurikuler aktif</span></div>
+        <div class="stat"><b>55</b><span>Guru &amp; tenaga kependidikan</span></div>
+        <div class="stat"><b>34:1</b><span>Rasio siswa per kelas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRAM ===================== -->
+  <section id="program" aria-labelledby="program-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__text reveal">
+          <span class="eyebrow">Akademik</span>
+          <h2 id="program-h">Pilih jalur yang paling pas dengan anak Anda</h2>
+          <p class="lede" style="margin-top:14px">Enam jalur belajar: empat kelompok mata pelajaran pilihan dan dua program keterampilan. Porsi praktiknya besar, dan setiap kelas dibimbing wali kelas dengan rasio kecil — jadi tidak ada siswa yang "hilang di tengah".</p>
+        </div>
+        <div class="rail-tools reveal" data-d="1">
+          <button class="rbtn" id="rail-prev" aria-label="Gulir program ke kiri" aria-controls="rail">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+          </button>
+          <button class="rbtn" id="rail-next" aria-label="Gulir program ke kanan" aria-controls="rail">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <ul class="rail reveal" id="rail" tabindex="0" aria-label="Daftar mata pelajaran pilihan">
+        <li><a class="pcard" href="#kontak">
+          <span class="pcard__ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 7.5h8"/><path d="M8 12h.01M12 12h.01M16 12h.01M8 16h.01M12 16h.01M16 16h.01"/></svg></span>
+          <b>Matematika &amp; Sains</b><small>Fisika, kimia, biologi, riset</small>
+        </a></li>
+        <li><a class="pcard" href="#kontak">
+          <span class="pcard__ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.5 3 14.5 0 18c-3-3.5-3-14.5 0-18Z"/></svg></span>
+          <b>Ilmu Sosial</b><small>Ekonomi, sosiologi, geografi</small>
+        </a></li>
+        <li><a class="pcard" href="#kontak">
+          <span class="pcard__ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5c3-1.5 6-1.5 9 0v13c-3-1.5-6-1.5-9 0v-13Z"/><path d="M21 5.5c-3-1.5-6-1.5-9 0v13c3-1.5 6-1.5 9 0v-13Z"/></svg></span>
+          <b>Bahasa &amp; Budaya</b><small>Inggris, Indonesia, Arab</small>
+        </a></li>
+        <li><a class="pcard" href="#kontak">
+          <span class="pcard__ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 5 12l4 4"/><path d="M15 8l4 4-4 4"/><path d="M13.5 5.5l-3 13"/></svg></span>
+          <b>Informatika</b><small>Berpikir komputasional, literasi digital, analisis data</small>
+        </a></li>
+        <li><a class="pcard" href="#kontak">
+          <span class="pcard__ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17.5 14 6.5a2.1 2.1 0 0 1 3 3L6 20.5H3v-3Z"/><path d="M13 7.5l3 3"/></svg></span>
+          <b>Seni &amp; Desain</b><small>Musik, rupa, multimedia</small>
+        </a></li>
+        <li><a class="pcard" href="#kontak">
+          <span class="pcard__ic"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9.5 12 5l9 4.5-9 4.5-9-4.5Z"/><path d="M7 12v4.6c0 1.3 2.2 2.4 5 2.4s5-1.1 5-2.4V12"/></svg></span>
+          <b>Persiapan Karier</b><small>Konsultasi jurusan &amp; kampus</small>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== BEASISWA (PIP) ===================== -->
+  <!-- Isi bagian ini diambil dari laman resmi Program Indonesia Pintar
+       (pip.kemendikdasmen.go.id) dan keterangan sekolah:
+         · sekolah MELANJUTKAN PIP bagi peserta didik yang sudah menerimanya
+           sejak jenjang SMP;
+         · sekolah MEMBANTU MENGUSULKAN peserta didik dari keluarga tidak mampu
+           yang belum menerima PIP.
+       Yang sengaja TIDAK ditulis di sini: besaran bantuan (angkanya berubah
+       tiap tahun — hanya yang tertulis di laman resmi yang berlaku) dan berkas
+       yang perlu disiapkan (sekolah yang menjelaskan langsung ke wali murid). -->
+  <section class="beasiswa" id="beasiswa" aria-labelledby="beasiswa-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__text reveal">
+          <span class="eyebrow">Beasiswa</span>
+          <h2 id="beasiswa-h">Program Indonesia Pintar (PIP)</h2>
+          <p class="lede" style="margin-top:14px">PIP adalah bantuan uang tunai dari pemerintah bagi peserta didik dari keluarga miskin atau rentan miskin, supaya mereka tetap bisa bersekolah sampai tamat pendidikan menengah. Sekolah mengurus dua hal: <strong>melanjutkan bantuan</strong> bagi siswa yang sudah menerimanya sejak SMP, dan <strong>mengusulkan siswa yang belum menerima</strong>.</p>
+        </div>
+      </div>
+
+      <div class="bsw-grid">
+        <article class="bsw-card reveal">
+          <span class="bsw-card__ic" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6M20 12a8 8 0 0 1-13.7 5.6"/><path d="M17.6 3.6v3.3h-3.3M6.4 20.4v-3.3h3.3"/></svg></span>
+          <h3>Melanjutkan PIP dari jenjang SMP</h3>
+          <p>Siswa yang sejak SMP sudah terdaftar sebagai penerima PIP tetap menerima bantuannya setelah masuk SMA. Sekolah memperbarui data penerimanya setiap tahun ajaran supaya bantuannya tidak terputus.</p>
+        </article>
+
+        <article class="bsw-card reveal" data-d="1">
+          <span class="bsw-card__ic bsw-card__ic--teal" aria-hidden="true"><svg class="i" viewBox="0 0 24 24"><circle cx="10" cy="8" r="3.2"/><path d="M3.6 20a6.4 6.4 0 0 1 12.8 0"/><path d="M18.5 7.5v6M15.5 10.5h6"/></svg></span>
+          <h3>Mengusulkan siswa yang belum menerima</h3>
+          <p>Sekolah membantu mengusulkan siswa dari keluarga miskin atau rentan miskin yang belum pernah menerima PIP. Usulan dikirim lewat jalur resmi pemerintah — yang menetapkan penerimanya pemerintah pusat, dan sekolah mendampingi sampai hasilnya keluar.</p>
+        </article>
+
+      </div>
+
+      <div class="bsw-panel reveal" data-d="2">
+        <h3>Siapa yang bisa diusulkan</h3>
+        <p class="bsw-panel__lead">Peserta didik dari keluarga miskin atau rentan miskin, terutama yang termasuk salah satu kelompok berikut:</p>
+        <ul class="bsw-list bsw-list--dua">
+          <li>Pemegang Kartu Indonesia Pintar (KIP)</li>
+          <li>Anak dari keluarga penerima Program Keluarga Harapan (PKH) atau pemegang Kartu Keluarga Sejahtera</li>
+          <li>Yatim piatu, yatim, atau piatu — termasuk yang tinggal di panti asuhan</li>
+          <li>Anak yang terkena dampak bencana alam</li>
+          <li>Anak dari keluarga yang orang tuanya kena pemutusan hubungan kerja (PHK), terkena musibah, atau memiliki lebih dari tiga saudara serumah</li>
+          <li>Anak yang sempat putus sekolah dan ingin kembali melanjutkan belajar</li>
+        </ul>
+      </div>
+
+      <div class="bsw-note reveal" data-d="1">
+        <div>
+          <h3>Anak Anda belum pernah menerima PIP?</h3>
+          <p>Sampaikan keadaan keluarga Anda ke <strong>wali kelas</strong> atau datang ke <strong>kantor sekolah</strong>. Pengusulan PIP di sekolah tidak dipungut biaya apa pun, dan berkas yang perlu disiapkan akan dijelaskan langsung oleh petugas sekolah. Nama siswa yang sudah ditetapkan sebagai penerima bisa dicek sendiri di laman resmi PIP.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="https://pip.kemendikdasmen.go.id/home_v1" target="_blank" rel="noopener">Cek nama penerima PIP</a>
+          <a class="btn btn--white" href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener">Tanya lewat WhatsApp</a>
+        </div>
+        <p class="bsw-sumber">Keterangan di bagian ini bersumber dari laman resmi Program Indonesia Pintar, Kementerian Pendidikan Dasar dan Menengah — <a href="https://pip.kemendikdasmen.go.id/home_v1" target="_blank" rel="noopener">pip.kemendikdasmen.go.id</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== EKSKUL ===================== -->
+  <section class="ekskul sec-tight" id="ekskul" aria-labelledby="ekskul-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__text reveal">
+          <span class="eyebrow">Di luar kelas</span>
+          <h2 id="ekskul-h">Bukan cuma pelajaran</h2>
+          <p class="lede" style="margin-top:14px">16 ekstrakurikuler berjalan Senin sampai Jumat setelah jam pelajaran sekolah. Semua dibimbing pembina tetap, dan setiap siswa bebas memilih yang ingin diikuti — tanpa paksaan.</p>
+        </div>
+      </div>
+
+            <div class="ex-grid">
+        <div class="ex-group reveal" style="--dot:var(--brand)">
+          <h3>Olahraga</h3>
+          <div class="ex-chips">
+            <a class="chip" href="#kontak">Basket</a><a class="chip" href="#kontak">Futsal</a>
+            <a class="chip" href="#kontak">Voli</a><a class="chip" href="#kontak">Silat</a>
+            <a class="chip" href="#kontak">Kempo</a>
+          </div>
+        </div>
+        <div class="ex-group reveal" data-d="1" style="--dot:var(--teal-deep)">
+          <h3>Seni &amp; Budaya</h3>
+          <div class="ex-chips">
+            <a class="chip" href="#kontak">Marching Band</a><a class="chip" href="#kontak">Paduan Suara</a>
+            <a class="chip" href="#kontak">Tari Tradisional</a><a class="chip" href="#kontak">Musik Panting</a>
+            <a class="chip" href="#kontak">Habsyi</a><a class="chip" href="#kontak">Musik Band</a>
+          </div>
+        </div>
+        <div class="ex-group reveal" style="--dot:var(--gold)">
+          <h3>Kepemimpinan &amp; Sosial</h3>
+          <div class="ex-chips">
+            <a class="chip" href="#kontak">OSIS</a><a class="chip" href="#kontak">Paskibra</a>
+            <a class="chip" href="#kontak">Pramuka</a><a class="chip" href="#kontak">PMR</a>
+          </div>
+        </div>
+        <div class="ex-group reveal" data-d="1" style="--dot:var(--teal)">
+          <h3>Akademik</h3>
+          <div class="ex-chips">
+            <a class="chip" href="#kontak">English Club</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TAHAPAN BELAJAR ===================== -->
+  <section id="tahap" aria-labelledby="tahap-h">
+    <div class="wrap duo duo--art-left">
+      <div class="reveal">
+        <span class="eyebrow">Perjalanan siswa</span>
+        <h2 id="tahap-h" style="margin-top:12px">Tiga tahun, tiga tahap</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="step__no" aria-hidden="true">01</span>
+            <div>
+              <h3>Kelas X — mengenali diri</h3>
+              <p>Tahun pertama dipakai untuk menyesuaikan diri dan memetakan minat. Siswa mencoba berbagai kegiatan, lalu dibimbing wali kelas menentukan mata pelajaran pilihan di akhir tahun.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step__no" aria-hidden="true">02</span>
+            <div>
+              <h3>Kelas XI — memperdalam</h3>
+              <p>Mata pelajaran pilihan berjalan penuh. Siswa mengerjakan proyek lintas mata pelajaran, mengikuti kompetisi, dan mengenal dunia kerja lewat praktik kerja lapangan.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span class="step__no" aria-hidden="true">03</span>
+            <div>
+              <h3>Kelas XII — menyiapkan langkah berikutnya</h3>
+              <p>Fokus pada pemantapan materi, persiapan ujian dan seleksi masuk perguruan tinggi, serta penyelesaian karya akhir. Guru BK mendampingi perencanaan studi dan karier.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="duo__art reveal" data-d="1">
+        <!-- SLOT FOTO 2 -->
+        <img class="shot shot--tahap" src="assets/foto-kegiatan-belajar.webp" alt="Ilustrasi kegiatan belajar di kelas" width="1402" height="1122">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FASILITAS ===================== -->
+  <section id="fasilitas" aria-labelledby="faskes-h">
+    <div class="wrap duo">
+      <div class="reveal">
+        <span class="eyebrow">Fasilitas</span>
+        <h2 id="faskes-h" style="margin-top:12px">Tempat belajar yang tidak sempit</h2>
+        <p class="lede" style="margin-top:14px">Ruang yang cukup, alat yang berfungsi, dan akses internet yang stabil — supaya praktik benar-benar bisa dilakukan, bukan cuma dibaca di buku.</p>
+
+        <ul class="faskes-list">
+          <li>
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><b>1 Laboratorium</b><span>40 Unit, jaringan internet, siap untuk praktik dan TKA</span></div>
+          </li>
+          <li>
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><b>Perpustakaan</b><span>Akses e-book dan ruang diskusi kelompok</span></div>
+          </li>
+          <li>
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><b>Lapangan multifungsi &amp; Aula</b><span>Basket, Futsal, Voli, plus aula berkapasitas 60 orang</span></div>
+          </li>
+          <li>
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            <div><b>Ruang UKS, BK, dan Mushola sekolah</b><span>Anggota PMR jaga setiap hari sekolah</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="duo__art reveal" data-d="1">
+        <!-- SLOT FOTO 3 -->
+        <img class="shot shot--faskes" src="assets/foto-laboratorium-perpustakaan.webp" alt="Ilustrasi laboratorium dan perpustakaan sekolah" width="1363" height="1145">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRESTASI & BERITA ===================== -->
+  <section id="prestasi" aria-labelledby="prestasi-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-head__text reveal">
+          <span class="eyebrow">Kabar sekolah</span>
+          <h2 id="prestasi-h">Prestasi &amp; berita terbaru</h2>
+        </div>
+        <button class="link-more reveal" data-d="1" type="button" id="news-toggle" aria-expanded="false" aria-controls="news-list">
+          <span id="news-toggle-label">Lihat semua</span>
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <div class="news reveal" id="news-list">
+        <div class="news-row">
+          <time datetime="2026-11-08">8 Nov 2026</time>
+          <div>
+            <h3>Tim Robotik juara 2 kompetisi nasional di Surabaya</h3>
+            <p>Lima siswa kelas XI membawa pulang medali perak kategori line follower.</p>
+          </div>
+          <span class="tag tag--brand">Prestasi</span>
+        </div>
+        <div class="news-row">
+          <time datetime="2026-10-30">30 Okt 2026</time>
+          <div>
+            <h3>Pekan Karya Siswa: 42 proyek dipamerkan di aula</h3>
+            <p>Dari aplikasi pengingat obat lansia sampai alat penyiram otomatis berbasis sensor.</p>
+          </div>
+          <span class="tag">Agenda</span>
+        </div>
+        <div class="news-row">
+          <time datetime="2026-10-21">21 Okt 2026</time>
+          <div>
+            <h3>Program beasiswa prestasi dibuka untuk 30 siswa</h3>
+            <p>Keringanan biaya sekolah penuh bagi siswa berprestasi dari keluarga prasejahtera.</p>
+          </div>
+          <span class="tag tag--gold">Beasiswa</span>
+        </div>
+        <div class="news-row">
+          <time datetime="2026-10-09">9 Okt 2026</time>
+          <div>
+            <h3>Kerja sama dengan industri lokal untuk kelas magang XI</h3>
+            <p>Enam perusahaan menampung siswa untuk praktik kerja lapangan semester genap.</p>
+          </div>
+          <span class="tag tag--green">Kerja sama</span>
+        </div>
+
+        <!-- ====== Berita lama: disembunyikan sampai "Lihat semua" diklik ====== -->
+        <div class="news-row">
+          <time datetime="2026-09-28">28 Sep 2026</time>
+          <div>
+            <h3>Kunjungan studi kelas XII ke kampus di Banjarmasin</h3>
+            <p>Siswa mengenal langsung suasana perkuliahan dan jalur masuk perguruan tinggi.</p>
+          </div>
+          <span class="tag tag--green">Kegiatan</span>
+        </div>
+        <div class="news-row">
+          <time datetime="2026-09-15">15 Sep 2026</time>
+          <div>
+            <h3>Pelatihan guru: menyusun asesmen berbasis proyek</h3>
+            <p>Empat puluh guru mengikuti workshop penyusunan rubrik penilaian proyek.</p>
+          </div>
+          <span class="tag tag--gold">Sekolah</span>
+        </div>
+        <div class="news-row">
+          <time datetime="2026-09-02">2 Sep 2026</time>
+          <div>
+            <h3>Turnamen basket antarkelas menyambut bulan olahraga</h3>
+            <p>Dua puluh empat tim dari kelas X sampai XII bertanding selama sepekan.</p>
+          </div>
+          <span class="tag">Agenda</span>
+        </div>
+        <div class="news-row">
+          <time datetime="2026-08-17">17 Agu 2026</time>
+          <div>
+            <h3>Peringatan HUT RI di lapangan sekolah</h3>
+            <p>Upacara bendera bersama warga sekitar, dilanjutkan lomba tradisional.</p>
+          </div>
+          <span class="tag tag--green">Kegiatan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="cta" id="kontak" aria-labelledby="cta-h">
+    <div class="wrap">
+      <p class="cta-mark reveal" aria-hidden="true"><b>SMA Negeri 1</b><br>Bati-bati</p>
+
+      <div class="band reveal" data-d="1">
+        <div class="band__in">
+          <h2 id="cta-h">Hubungi kami</h2>
+          <p>Kami senang menjawab pertanyaan orang tua, calon mitra, maupun alumni yang ingin mengenal sekolah ini lebih dekat. Hubungi lewat salah satu kanal di samping — pada hari sekolah kami balas di hari yang sama.</p>
+          <div class="btn-row">
+            <a class="btn btn--white" href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener">Tanya lewat WhatsApp
+              <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--onband" href="#program">Lihat program sekolah</a>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <a href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-8.6-6L3 21l6-1.4A9 9 0 0 0 12 21Z"/></svg>
+            <span><b>WhatsApp sekolah</b><span>WhatsApp Business — chat saja, tanpa panggilan</span></span>
+          </a>
+          <a href="mailto:sman1bati.bati@gmail.com">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m4 7 8 6 8-6"/></svg>
+            <span><b>Email</b><span>sman1bati.bati@gmail.com</span></span>
+          </a>
+          <div>
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            <span><b>Kunjungi sekolah</b><span>Jl. Ahmad Yani Km. 33,3, Desa Nusa Indah, Kec. Bati-bati, Kab. Tanah Laut</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="#top" aria-label="SMA Negeri 1 Bati-bati — beranda">
+          <img class="brand__logo" src="assets/logo-sman1-batibati.png" alt="" width="39" height="48">
+          <span class="brand__text"><b>SMA Negeri 1</b><span>Bati-bati</span></span>
+        </a>
+        <p>Sekolah menengah atas negeri di Kecamatan Bati-bati, Kabupaten Tanah Laut, Kalimantan Selatan.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/sman1bati_bati" target="_blank" rel="noopener" aria-label="Instagram sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.youtube.com/@smabat_bungas" target="_blank" rel="noopener" aria-label="Kanal YouTube sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5l5 2.5-5 2.5v-5Z"/></svg></a>
+          <a href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener" aria-label="WhatsApp sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-8.6-6L3 21l6-1.4A9 9 0 0 0 12 21Z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h3>Jelajahi</h3>
+        <ul>
+          <li><a href="#program">Mata pelajaran pilihan</a></li>
+          <li><a href="#beasiswa">Info beasiswa (PIP)</a></li>
+          <li><a href="#ekskul">Ekstrakurikuler</a></li>
+          <li><a href="#tahap">Tahapan belajar</a></li>
+          <li><a href="#prestasi">Prestasi &amp; berita</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Tentang</h3>
+        <ul>
+          <li><a href="profil.html">Visi &amp; misi</a></li>
+          <li><a href="profil.html#guru-staf">Guru &amp; tenaga kependidikan</a></li>
+          <li><a href="#fasilitas">Sarana prasarana</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Hubungi</h3>
+        <ul>
+          <li><a href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:sman1bati.bati@gmail.com">sman1bati.bati@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <p>© <span id="yr">2026</span> SMA Negeri 1 Bati-bati. Seluruh hak cipta dilindungi.</p>
+      <ul>
+        <li><a href="kebijakan.html#privasi">Kebijakan privasi</a></li>
+        <li><a href="kebijakan.html#syarat">Syarat penggunaan</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+        <li><a href="#top">Kembali ke atas</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---- 1. Header: garis saat halaman digulir ------------------------- */
+  var head = document.getElementById("head");
+  var onScroll = function () {
+    head.classList.toggle("is-stuck", window.scrollY > 8);
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ---- 2. Menu mobile ------------------------------------------------- */
+  var burger = document.getElementById("burger");
+  var mnav = document.getElementById("mnav");
+  burger.addEventListener("click", function () {
+    var open = mnav.classList.toggle("is-open");
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Tutup menu" : "Buka menu");
+  });
+  mnav.addEventListener("click", function (e) {
+    if (e.target.closest("a")) {
+      mnav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded", "false");
+      burger.setAttribute("aria-label", "Buka menu");
+    }
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && mnav.classList.contains("is-open")) {
+      mnav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded", "false");
+      burger.focus();
+    }
+  });
+
+  /* ---- 3. Rail program: tombol geser ---------------------------------- */
+  var rail = document.getElementById("rail");
+  var prev = document.getElementById("rail-prev");
+  var next = document.getElementById("rail-next");
+
+  var step = function () {
+    var card = rail.firstElementChild;
+    if (!card) return 200;
+    var gap = parseFloat(getComputedStyle(rail).columnGap) || 16;
+    return (card.getBoundingClientRect().width + gap) * 3;
+  };
+
+  var syncBtns = function () {
+    var card = rail.firstElementChild;
+    var cardW = card ? card.getBoundingClientRect().width : 200;
+    var max = rail.scrollWidth - rail.clientWidth;
+    // Kalau nyaris tidak ada yang tersembunyi, sembunyikan sepasang tombol —
+    // tombol yang terlihat tapi tidak berguna lebih buruk daripada tidak ada.
+    var bisaGeser = max > cardW * 0.5;
+    prev.hidden = !bisaGeser;
+    next.hidden = !bisaGeser;
+    rail.tabIndex = bisaGeser ? 0 : -1;
+    if (bisaGeser) {
+      prev.disabled = rail.scrollLeft <= 2;
+      next.disabled = rail.scrollLeft >= max - 2;
+    }
+  };
+
+  if (rail && prev && next) {
+    prev.addEventListener("click", function () {
+      rail.scrollBy({ left: -step(), behavior: "smooth" });
+    });
+    next.addEventListener("click", function () {
+      rail.scrollBy({ left: step(), behavior: "smooth" });
+    });
+    rail.addEventListener("scroll", syncBtns, { passive: true });
+    window.addEventListener("resize", syncBtns);
+    syncBtns();
+  }
+
+  /* ---- 4. Animasi muncul saat digulir --------------------------------- */
+  var items = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          en.target.classList.add("in");
+          io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add("in"); });
+  }
+
+  /* ---- 5. Sorot menu sesuai bagian yang sedang dilihat ---------------- */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var setActive = function (link) {
+    links.forEach(function (a) { a.classList.toggle("is-active", a === link); });
+  };
+  var homeLink = links.filter(function (a) { return a.getAttribute("href") === "#top"; })[0];
+  // Hanya <section> yang diamati. "#top" menunjuk ke <body>, yang selalu
+  // terlihat, sehingga akan menutupi sorotan bagian lain.
+  var targets = links
+    .map(function (a) { return document.querySelector(a.getAttribute("href")); })
+    .filter(function (el) { return el && el.tagName === "SECTION"; });
+
+  if ("IntersectionObserver" in window && targets.length) {
+    var nav = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        setActive(links.filter(function (a) {
+          return a.getAttribute("href") === "#" + en.target.id;
+        })[0]);
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    targets.forEach(function (t) { nav.observe(t); });
+
+    // "Beranda" aktif selama halaman masih di bagian atas
+    var syncHome = function () {
+      if (window.scrollY < 200) setActive(homeLink);
+    };
+    syncHome();
+    window.addEventListener("scroll", syncHome, { passive: true });
+  }
+
+  /* ---- 6. Tombol "Lihat semua" pada kabar sekolah --------------------- */
+  var newsToggle = document.getElementById("news-toggle");
+  var newsList = document.getElementById("news-list");
+  if (newsToggle && newsList) {
+    var newsRows = newsList.querySelectorAll(".news-row");
+    if (newsRows.length <= 4) {
+      // belum ada berita lama yang perlu disembunyikan — tombol tidak usah tampil
+      newsToggle.hidden = true;
+    } else {
+      newsToggle.addEventListener("click", function () {
+        var open = newsList.classList.toggle("is-open");
+        newsToggle.setAttribute("aria-expanded", String(open));
+        document.getElementById("news-toggle-label").textContent =
+          open ? "Tampilkan lebih sedikit" : "Lihat semua";
+        // saat ditutup halaman jadi lebih pendek; pastikan bagian ini tetap terlihat
+        if (!open) {
+          var top = newsList.getBoundingClientRect().top;
+          if (top < 0) window.scrollTo(0, top + window.scrollY - 100);
+        }
+      });
+    }
+  }
+
+  /* ---- 7. Tahun berjalan di footer ------------------------------------ */
+  document.getElementById("yr").textContent = new Date().getFullYear();
+})();
+</script>
+
+<!-- Data terstruktur: bantu Google menampilkan info sekolah.
+     Kalau kontak sekolah berubah, ubah juga di sini (telepon tidak lagi dipasang). -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HighSchool",
+  "name": "SMA Negeri 1 Bati-bati",
+  "alternateName": "SMAN 1 Bati-bati",
+  "email": "sman1bati.bati@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Jl. Ahmad Yani Km. 33,3, Desa Nusa Indah",
+    "addressLocality": "Bati-bati",
+    "addressRegion": "Kalimantan Selatan",
+    "addressCountry": "ID"
+  },
+  "sameAs": [
+    "https://www.instagram.com/sman1bati_bati",
+    "https://www.youtube.com/@smabat_bungas"
+  ]
+}
+</script>
+</body>
+</html>

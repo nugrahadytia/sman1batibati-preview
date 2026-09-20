@@ -1,0 +1,829 @@
+/* ===========================================================================
+   SMA NEGERI 1 BATI-BATI — gaya bersama
+   Dipakai oleh index.html dan profil.html. Ubah warna/huruf di sini,
+   kedua halaman ikut berubah. Jangan disalin ke dalam halaman.
+   =========================================================================== */
+
+/* =========================================================================
+   1. TOKEN DESAIN
+   Palet diambil dari referensi: magenta, ungu, kuning, cyan di atas putih.
+   Ungu dipakai untuk teks angka agar kontrasnya aman; kuning & cyan hanya
+   untuk bidang dekoratif (tidak pernah untuk teks di atas putih).
+   ========================================================================= */
+:root{
+  --paper:#ffffff;
+  --surface:#FAF6F1;
+  --surface-2:#F2ECE4;
+  --ink:#241A13;
+  --ink-2:#4E443A;
+  --muted:#6E6157;
+  --line:#EBE3D9;
+  --line-strong:#DCD2C4;
+
+  /* ---- PALET DIAMBIL LANGSUNG DARI LOGO SMAN 1 BATI-BATI ----
+     oranye perisai #E57917 · emas bingkai #F5CE00 · hijau padi & kapas #148E4C
+     teal cincin #0D8A80 · merah cincin #DC2B24                        */
+  --brand:#E57917;        /* oranye logo — HANYA untuk bidang besar/dekoratif */
+  --brand-deep:#C4600C;   /* oranye untuk teks besar, kontras 4,2:1 */
+  --brand-btn:#AC5207;    /* tombol solid & wordmark, kontras 5,3:1 */
+  --brand-ink:#9A4A06;    /* tautan & teks aksen kecil, kontras 6,3:1 */
+  --brand-soft:#FDEBD7;
+  --gold:#F5CE00;         /* emas — hanya untuk bidang dekoratif */
+  --gold-ink:#7A6000;
+  --gold-soft:#FDF3CC;
+  --teal:#0D8A80;         /* teal cincin — bidang dekoratif */
+  --teal-deep:#0A6E66;    /* teal tua — band CTA & teks, kontras 6,1:1 */
+  --teal-soft:#DAF0EE;
+  --green:#148E4C;        /* hijau daun padi — ikon centang */
+  --green-ink:#106B39;
+  --green-soft:#DDF0E4;
+  --red-ink:#A81812;      /* merah cincin — tag */
+  --red-soft:#FBE0DE;
+
+  --r-sm:12px;
+  --r-md:20px;
+  --r-lg:28px;
+  --r-pill:999px;
+
+  --shadow-sm:0 2px 8px -4px rgba(36,26,19,.16);
+  --shadow-md:0 18px 40px -26px rgba(36,26,19,.55);
+  --shadow-lg:0 30px 60px -34px rgba(36,26,19,.55);
+
+  --font:"Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --ease:cubic-bezier(.22,.75,.3,1);
+  --gut:clamp(20px,4vw,32px);
+}
+
+/* =========================================================================
+   FONT DISPLAY NORWESTER
+   Karya Jamie Wilson, lisensi SIL Open Font License 1.1.
+   Berkasnya disimpan lokal di assets/fonts/ supaya situs tetap jalan
+   tanpa internet. Norwester hanya punya satu bobot (400) dan hurufnya
+   semua kapital + small caps — jadi JANGAN pakai font-weight tebal,
+   nanti browser menebalkan sendiri dan bentuk hurufnya jadi rusak.
+   ========================================================================= */
+@font-face{
+  font-family:"Norwester";
+  /* Jalur di bawah ini relatif terhadap berkas CSS ini (assets/), bukan
+     terhadap halaman HTML — jadi tidak pakai awalan "assets/". */
+  src:url("fonts/norwester-latin-400-normal.woff2") format("woff2"),
+      url("fonts/norwester-latin-400-normal.woff") format("woff");
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
+
+/* =========================================================================
+   2. DASAR
+   ========================================================================= */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html:focus-within{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+h1,h2,h3,h4{margin:0;line-height:1.06;letter-spacing:-.03em;font-weight:800;text-wrap:balance}
+h2{font-size:clamp(1.7rem,3.4vw,2.6rem)}
+h3{font-size:clamp(1.05rem,1.5vw,1.2rem);letter-spacing:-.02em;line-height:1.25}
+p{margin:0;text-wrap:pretty}
+ul{margin:0;padding:0;list-style:none}
+
+.wrap{width:min(1160px,100% - (var(--gut) * 2));margin-inline:auto}
+section{padding-block:clamp(56px,7vw,104px);scroll-margin-top:84px}
+.sec-tight{padding-block:clamp(20px,3vw,36px)}
+
+.skip{
+  position:absolute;left:12px;top:-64px;z-index:100;
+  background:var(--ink);color:#fff;padding:10px 16px;border-radius:0 0 12px 12px;
+  font-weight:700;text-decoration:none;transition:top .18s var(--ease);
+}
+.skip:focus{top:0}
+
+:where(a,button,[tabindex]):focus-visible{
+  outline:3px solid var(--teal-deep);
+  outline-offset:3px;
+  border-radius:6px;
+}
+
+/* Butir / label kecil -------------------------------------------------- */
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--brand-ink);
+}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.lede{color:var(--muted);font-size:clamp(.98rem,1.3vw,1.075rem);max-width:56ch}
+.sec-head{display:flex;flex-wrap:wrap;gap:20px 32px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(28px,4vw,44px)}
+.sec-head__text{max-width:56ch}
+.sec-head--center{flex-direction:column;align-items:center;text-align:center;gap:14px}
+.sec-head--center .lede{margin-inline:auto}
+.sec-head h2{margin-top:12px}
+.sec-head--center h2{margin-top:0}
+
+/* Tombol ---------------------------------------------------------------- */
+.btn{
+  --bg:var(--ink);--fg:#fff;--bd:transparent;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  min-height:48px;padding:13px 22px;
+  background:var(--bg);color:var(--fg);border:1.5px solid var(--bd);
+  border-radius:var(--r-sm);font-weight:700;font-size:.94rem;letter-spacing:-.01em;
+  text-decoration:none;cursor:pointer;
+  transition:transform .16s var(--ease),box-shadow .16s var(--ease),background .16s var(--ease),color .16s var(--ease),border-color .16s var(--ease);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn--primary{--bg:var(--brand-btn);box-shadow:0 14px 28px -16px rgba(172,82,7,.9)}
+.btn--primary:hover{--bg:#93450A}
+.btn--ghost{--bg:transparent;--fg:var(--ink);--bd:var(--line-strong)}
+.btn--ghost:hover{--bg:var(--surface);--bd:var(--ink)}
+.btn--white{--bg:#fff;--fg:var(--teal-deep)}
+.btn--onband{--bg:transparent;--fg:#fff;--bd:rgba(255,255,255,.55)}
+.btn--onband:hover{--bg:rgba(255,255,255,.14)}
+.btn-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* Di lebar ponsel, kedua tombol bertumpuk — paksa keduanya selebar penuh
+   supaya panjangnya sama persis. Tanpa ini lebarnya mengikuti panjang
+   teksnya sendiri, jadi tombol pendek terlihat lebih kecil dan tepi
+   kanannya tidak rata ("Tanya lewat WhatsApp" 239,7px vs "Lihat program
+   sekolah" 204,1px). Batas 560px sejalan dengan breakpoint kaki halaman. */
+@media (max-width:560px){
+  .btn-row .btn{width:100%}
+}
+
+.link-more{
+  display:inline-flex;align-items:center;gap:7px;
+  background:none;border:0;padding:10px 0;
+  color:var(--brand-ink);font-family:inherit;font-weight:700;font-size:.92rem;
+  text-decoration:none;cursor:pointer;white-space:nowrap;
+  transition:gap .16s var(--ease);
+}
+/* Garis bawahnya dipasang di <span> dalamnya, bukan di tombolnya. Sebabnya
+   tombol ini perlu padding tinggi supaya nyaman disentuh di layar sentuh;
+   kalau garisnya di tombol, garisnya ikut turun menjauh dari teks. */
+.link-more > span{border-bottom:2px solid transparent;padding-bottom:2px;transition:border-color .16s var(--ease)}
+.link-more:hover > span{border-color:currentColor}
+.link-more:hover{gap:11px}
+/* dipakai juga sebagai <button>, dan .link-more{display:inline-flex}
+   mengalahkan [hidden] bawaan browser */
+.link-more[hidden]{display:none}
+.link-more .i{width:18px;height:18px;transition:transform .18s var(--ease)}
+.link-more[aria-expanded="true"] .i{transform:rotate(90deg)}
+
+/* Ikon garis ------------------------------------------------------------ */
+.i{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* =========================================================================
+   3. HEADER
+   ========================================================================= */
+.site-head{
+  position:sticky;top:0;z-index:60;
+  background:var(--paper);border-bottom:1px solid transparent;
+  transition:border-color .2s var(--ease),box-shadow .2s var(--ease);
+}
+.site-head.is-stuck{border-bottom-color:var(--line);box-shadow:0 10px 30px -24px rgba(36,26,19,.5)}
+.head-in{display:flex;align-items:center;gap:24px;min-height:74px}
+
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;flex:none}
+.brand__logo{width:auto;height:48px;flex:none}
+/* Wordmark dua baris, rata kiri, memakai font Norwester.
+   Norwester hanya bobot 400 — JANGAN ditebalkan, browser akan menebalkan
+   sendiri dan merusak bentuk hurufnya.
+   Huruf Norwester semuanya kapital (huruf kecil dipetakan ke kapital).
+   Kedua baris dibiarkan selebar alaminya — tidak dipaksa sama lebar. */
+.brand__text{
+  display:flex;flex-direction:column;
+  font-family:"Norwester", var(--font);
+  font-size:1.15rem;font-weight:400;line-height:1.04;
+  letter-spacing:.005em;word-spacing:.06em;
+}
+.brand__text b{color:var(--brand-btn);font-weight:400}
+
+.nav{margin-left:auto}
+.nav ul{display:flex;gap:4px;align-items:center}
+.nav a{
+  display:block;padding:9px 13px;border-radius:10px;text-decoration:none;
+  font-size:.9rem;font-weight:600;color:var(--ink-2);
+  transition:background .15s var(--ease),color .15s var(--ease);
+}
+.nav a:hover{background:var(--surface);color:var(--ink)}
+.nav a.is-active{color:var(--brand-ink);background:var(--surface)}
+
+/* "Profil" menuju HALAMAN LAIN, bukan bagian di halaman ini. Diberi garis
+   pemisah supaya bedanya jelas — sekaligus supaya sorotan gulir (yang hanya
+   bisa mengikuti bagian di halaman ini) tidak terlihat seperti melompati
+   satu menu. Karena itu pula posisinya di ujung: empat menu yang bisa
+   disorot jadi berdampingan, jadi sorotannya bergerak mulus tanpa putus. */
+.nav li.nav-lain{position:relative;margin-left:19px}
+.nav li.nav-lain::before{
+  content:"";position:absolute;left:-10px;top:50%;transform:translateY(-50%);
+  width:1px;height:18px;background:var(--line-strong);
+}
+
+.head-act{display:flex;align-items:center;gap:10px;flex:none}
+.burger{display:none;width:46px;height:46px;border:1.5px solid var(--line-strong);border-radius:12px;background:#fff;cursor:pointer;place-items:center}
+.burger:hover{background:var(--surface)}
+
+.mnav{display:none;border-top:1px solid var(--line);background:var(--paper)}
+.mnav.is-open{display:block}
+.mnav ul{padding:10px 0 20px}
+.mnav a{display:block;padding:14px 2px;text-decoration:none;font-weight:700;border-bottom:1px solid var(--line);font-size:1.02rem}
+
+@media (max-width:1000px){
+  .nav{display:none}
+  .burger{display:grid}
+  .head-act{margin-left:auto;gap:0}
+}
+/* di desktop .head-act kosong (hanya berisi tombol menu yang tersembunyi),
+   sembunyikan agar menu tidak menyisakan celah di tepi kanan */
+@media (min-width:1001px){
+  .head-act{display:none}
+}
+
+/* =========================================================================
+   4. HERO
+   ========================================================================= */
+.hero{padding-block:clamp(36px,5vw,68px) clamp(28px,4vw,52px)}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(32px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(2.15rem,5vw,4rem);margin:20px 0 0}
+.hero h1 em{font-style:normal;color:var(--brand-deep);position:relative;white-space:nowrap}
+.hero .lede{margin-top:20px;font-size:clamp(1rem,1.4vw,1.12rem)}
+.hero .btn-row{margin-top:30px}
+.hero-note{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;color:var(--muted);font-size:.86rem;font-weight:600}
+.hero-note span{display:inline-flex;align-items:center;gap:7px}
+.hero-note .i{width:17px;height:17px;stroke-width:2;color:var(--green)}
+
+.hero-art{position:relative}
+
+/* Bentuk blob — keluarga bentuk yang sama, radius besar di satu sudut */
+.shot{
+  position:relative;display:grid;place-items:center;overflow:hidden;
+  background:var(--brand);
+}
+.shot::before{
+  content:"";position:absolute;inset:0;
+  background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.17) 0 2px,transparent 2px 18px);
+}
+.shot__ph{
+  position:relative;display:grid;justify-items:center;gap:5px;text-align:center;
+  background:rgba(255,255,255,.95);color:var(--ink);
+  padding:16px 20px;border-radius:16px;box-shadow:0 14px 34px -16px rgba(36,26,19,.45);
+  max-width:78%;
+}
+.shot__ph .i{color:var(--brand-ink);width:24px;height:24px;margin-bottom:3px}
+.shot__ph b{font-size:.88rem;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.shot__ph small{font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.02em}
+
+.shot--hero{aspect-ratio:5/4.3;border-radius:44px 44px 132px 44px;box-shadow:var(--shadow-lg)}
+.shot--tahap{background:var(--gold);aspect-ratio:4/3.2;border-radius:132px 44px 44px 44px;box-shadow:var(--shadow-md)}
+.shot--tahap .shot__ph .i{color:var(--gold-ink)}
+.shot--faskes{background:var(--teal);aspect-ratio:5/4.2;border-radius:44px 132px 44px 44px;box-shadow:var(--shadow-md)}
+.shot--faskes .shot__ph .i{color:var(--teal-deep)}
+/* Kalau slot foto sudah diisi gambar sungguhan: bentuk blob, rasio, dan
+   bayangannya tetap sama, hanya isi kotaknya yang berganti. Latar warnanya
+   tetap dipertahankan supaya kalau gambar gagal dimuat, yang muncul blok
+   berwarna — bukan ikon gambar rusak. */
+img.shot{display:block;width:100%;height:auto;object-fit:cover}
+
+.float-card{
+  position:absolute;background:#fff;border-radius:18px;padding:13px 15px;
+  /* Kartu ini duduk di atas foto, bukan lagi blok warna solid. Garis tepi
+     tipis + bayangan berlapis dipakai supaya tepinya tetap tegas walau
+     kebetulan berada di atas bagian foto yang terang. */
+  border:1px solid rgba(36,26,19,.09);
+  box-shadow:0 1px 2px rgba(36,26,19,.10),0 16px 34px -14px rgba(36,26,19,.5);
+  display:flex;align-items:center;gap:11px;
+  font-size:.83rem;font-weight:700;line-height:1.2;letter-spacing:-.01em;
+}
+.float-card .i{width:26px;height:26px;color:#fff;padding:5px;border-radius:9px;background:var(--teal-deep)}
+.float-card small{display:block;font-size:.74rem;font-weight:600;color:var(--muted);letter-spacing:0;margin-top:2px}
+.float-card--a{top:-18px;right:-6px;animation:drift 7s var(--ease) infinite}
+.float-card--b{bottom:-20px;left:-14px;animation:drift 7s var(--ease) infinite .9s}
+.float-card--b .i{background:var(--brand)}
+@keyframes drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+@media (max-width:940px){
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .float-card--a{right:6px;top:-14px}
+  .float-card--b{left:6px;bottom:-16px}
+}
+
+/* =========================================================================
+   5. STAT STRIP
+   ========================================================================= */
+.stats{margin-top:clamp(34px,5vw,56px)}
+.stats-in{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border:1px solid var(--line);border-radius:var(--r-lg);background:var(--paper);
+  box-shadow:var(--shadow-sm);overflow:hidden;
+}
+.stat{padding:24px clamp(16px,2.4vw,28px);border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.stat span{display:block;margin-top:8px;font-size:.83rem;font-weight:600;color:var(--muted);line-height:1.35}
+.stat:nth-child(1) b{color:var(--brand-ink)}
+.stat:nth-child(2) b{color:var(--teal-deep)}
+.stat:nth-child(3) b{color:var(--green-ink)}
+.stat:nth-child(4) b{color:var(--gold-ink)}
+@media (max-width:760px){
+  .stats-in{grid-template-columns:1fr 1fr}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+
+/* =========================================================================
+   6. RAIL PROGRAM
+   ========================================================================= */
+.rail-tools{display:flex;gap:10px;align-items:center}
+.rbtn{
+  width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line-strong);
+  background:#fff;display:grid;place-items:center;cursor:pointer;
+  transition:background .15s var(--ease),border-color .15s var(--ease),opacity .15s var(--ease);
+}
+.rbtn:hover:not(:disabled){background:var(--ink);border-color:var(--ink);color:#fff}
+.rbtn:disabled{opacity:.32;cursor:not-allowed}
+/* perlu aturan ini: .rbtn{display:grid} mengalahkan [hidden] bawaan browser */
+.rbtn[hidden]{display:none}
+
+.rail{
+  display:grid;grid-auto-flow:column;
+  grid-auto-columns:196px;
+  gap:16px;overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;
+  padding:6px 2px 26px;
+  scrollbar-width:none;
+}
+.rail::-webkit-scrollbar{display:none}
+.rail > *{scroll-snap-align:start}
+/* <li> jadi grid container supaya .pcard meregang penuh — tanpa ini tinggi
+   kartu jadi tidak rata (kartu dengan teks lebih panjang jadi lebih tinggi) */
+.rail > li{display:grid}
+
+/* Di desktop keenam kartu muat sebaris, jadi rail tidak perlu digeser dan
+   tombol panahnya disembunyikan. Di layar kecil rail tetap bisa digeser. */
+@media (min-width:901px){
+  .rail{grid-auto-columns:1fr;overflow:visible;scroll-snap-type:none;padding:6px 2px 4px}
+  .rail-tools .rbtn{display:none}
+}
+
+.pcard{
+  background:#fff;border-radius:var(--r-md);border:1px solid var(--line);
+  box-shadow:var(--shadow-sm);padding:26px 18px 24px;
+  display:grid;justify-items:center;gap:14px;text-align:center;
+  text-decoration:none;min-height:186px;
+  /* align-content:start (bukan center) supaya isi tiap kartu mulai dari titik
+     yang sama — kalau dipusatkan, kartu berteks panjang mendorong isinya ke atas
+     dan ikon/judul/keterangan jadi tidak sejajar antar kartu */
+  align-content:start;
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease);
+}
+.pcard:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--line-strong)}
+.pcard__ic{
+  width:54px;height:54px;border-radius:16px;display:grid;place-items:center;
+  background:var(--surface-2);color:var(--ink);
+}
+.pcard__ic .i{width:26px;height:26px;stroke-width:1.6}
+/* min-height = tinggi 2 baris judul (2 x line-height 1.6em). Semua kartu dapat
+   jatah judul yang sama, jadi keterangan di bawahnya selalu mulai sejajar. */
+.pcard b{font-size:.95rem;font-weight:800;letter-spacing:-.015em;min-height:3.2em}
+.pcard small{font-size:.78rem;color:var(--muted);font-weight:600;line-height:1.35;margin-top:-8px}
+/* Warna ikon per kartu — pakai li:nth-child karena .pcard adalah anak tunggal <li> */
+.rail > li:nth-child(1) .pcard__ic{background:var(--brand-soft);color:var(--brand-ink)}
+.rail > li:nth-child(2) .pcard__ic{background:var(--teal-soft);color:var(--teal-deep)}
+.rail > li:nth-child(3) .pcard__ic{background:var(--gold-soft);color:var(--gold-ink)}
+.rail > li:nth-child(4) .pcard__ic{background:var(--green-soft);color:var(--green-ink)}
+.rail > li:nth-child(5) .pcard__ic{background:var(--brand-soft);color:var(--brand-ink)}
+.rail > li:nth-child(6) .pcard__ic{background:var(--teal-soft);color:var(--teal-deep)}
+@media (max-width:640px){
+  .rail{grid-auto-columns:158px;gap:12px}
+  .pcard{min-height:170px;padding:22px 14px 18px}
+}
+
+/* =========================================================================
+   7. EKSKUL
+   ========================================================================= */
+.ekskul{background:var(--paper)}
+.ex-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(22px,3vw,38px) clamp(24px,4vw,52px)}
+.ex-group h3{display:flex;align-items:center;gap:10px;font-size:.82rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ex-group h3::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--dot,var(--brand));flex:none}
+.ex-chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+.chip{
+  display:inline-block;padding:9px 15px;border-radius:var(--r-pill);
+  border:1.5px solid var(--line-strong);background:#fff;
+  font-size:.86rem;font-weight:600;color:var(--ink-2);text-decoration:none;
+  transition:border-color .15s var(--ease),background .15s var(--ease),color .15s var(--ease),transform .15s var(--ease);
+}
+.chip:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-2px)}
+@media (max-width:640px){.chip{padding:11px 16px}}
+@media (max-width:820px){.ex-grid{grid-template-columns:1fr}}
+
+/* =========================================================================
+   8. TAHAPAN BELAJAR
+   ========================================================================= */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,5vw,68px);align-items:center}
+@media (min-width:881px){
+  /* hanya di desktop: tarik blob ke kiri agar section ini berseberangan dengan yang berikutnya */
+  .duo--art-left .duo__art{order:-1}
+}
+.steps{margin-top:28px;display:grid;gap:22px}
+.step{display:grid;grid-template-columns:46px 1fr;gap:18px;align-items:start}
+.step__no{
+  font-size:1.35rem;font-weight:800;letter-spacing:-.03em;color:var(--teal-deep);
+  line-height:1;padding-top:2px;
+}
+.step h3{margin-bottom:6px}
+.step p{color:var(--muted);font-size:.94rem}
+@media (max-width:880px){
+  .duo{grid-template-columns:1fr;gap:36px}
+}
+
+/* =========================================================================
+   9. FASILITAS
+   ========================================================================= */
+.faskes-list{margin-top:26px;display:grid;gap:2px}
+.faskes-list li{
+  display:grid;grid-template-columns:26px 1fr;gap:14px;align-items:start;
+  padding:15px 0;border-bottom:1px solid var(--line);
+}
+.faskes-list li:first-child{border-top:1px solid var(--line)}
+.faskes-list .i{width:20px;height:20px;color:#fff;background:var(--green);border-radius:50%;padding:3px;stroke-width:3;margin-top:2px}
+.faskes-list b{font-size:.97rem;font-weight:700;display:block;letter-spacing:-.015em}
+.faskes-list span{font-size:.87rem;color:var(--muted)}
+
+/* =========================================================================
+   10. BEASISWA — PROGRAM INDONESIA PINTAR (PIP)
+   Isi bagian ini datang dari laman resmi PIP (pip.kemendikdasmen.go.id) dan
+   keterangan sekolah. Kalau aturan pemerintah berubah, perbarui dari laman
+   itu — dan jangan menambahkan besaran bantuan di sini, angkanya berubah
+   tiap tahun sehingga cepat jadi salah.
+   ========================================================================= */
+.beasiswa{background:var(--surface)}
+.bsw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(16px,2.2vw,24px)}
+.bsw-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:clamp(22px,2.6vw,28px);box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;gap:14px;
+}
+.bsw-card__ic{
+  width:46px;height:46px;border-radius:16px;display:grid;place-items:center;flex:none;
+  background:var(--brand-soft);color:var(--brand-ink);
+}
+.bsw-card__ic--teal{background:var(--teal-soft);color:var(--teal-deep)}
+.bsw-card__ic--gold{background:var(--gold-soft);color:var(--gold-ink)}
+.bsw-card p{font-size:.93rem;color:var(--ink-2)}
+.bsw-panel{
+  margin-top:clamp(16px,2.2vw,24px);background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:clamp(22px,2.6vw,28px) clamp(22px,2.6vw,30px);
+  box-shadow:var(--shadow-sm);display:grid;gap:10px;
+}
+.bsw-panel__lead{font-size:.93rem;color:var(--ink-2)}
+.bsw-list{margin-top:2px;display:grid;gap:10px}
+/* Daftar syarat disusun dua kolom memakai `columns`, BUKAN grid dua kolom.
+   Pada grid, tinggi satu baris ditentukan butir terpanjang, sehingga butir
+   pendek di sebelahnya (mis. "Pemegang Kartu Indonesia Pintar (KIP)")
+   menyisakan celah kosong — jarak antarbutir jadi terlihat tidak rata.
+   Dengan `columns`, tiap butir hanya memakai ruangnya sendiri. */
+.bsw-list--dua{display:block;columns:2;column-gap:clamp(24px,3vw,40px)}
+.bsw-list--dua li{margin-bottom:12px;break-inside:avoid}
+.bsw-list--dua li:last-child{margin-bottom:0}
+.bsw-list li{position:relative;padding-left:25px;font-size:.9rem;color:var(--ink-2);line-height:1.5}
+/* penanda butir titik, sama seperti daftar di halaman kebijakan (.dok li) */
+.bsw-list li::before{content:"";position:absolute;left:7px;top:.6em;width:6px;height:6px;border-radius:50%;background:var(--green-ink)}
+.bsw-note{
+  margin-top:clamp(16px,2.2vw,24px);background:var(--teal-soft);
+  border:1px solid rgba(13,138,128,.28);border-radius:var(--r-lg);
+  padding:clamp(24px,3vw,34px) clamp(24px,3vw,36px);
+  display:grid;gap:20px;
+}
+/* tombol putih di atas latar teal muda butuh garis tipis agar tepinya terlihat */
+.bsw-note .btn--white{--bd:rgba(13,138,128,.4)}
+.bsw-note h3{margin-bottom:8px}
+.bsw-note p{font-size:.95rem;color:var(--ink-2);max-width:70ch}
+.bsw-sumber{font-size:.82rem;color:var(--muted)}
+.bsw-sumber a{color:var(--brand-ink);font-weight:700}
+@media (max-width:820px){
+  .bsw-grid{grid-template-columns:1fr}
+  .bsw-list--dua{columns:1}
+}
+
+/* =========================================================================
+   11. PRESTASI
+   ========================================================================= */
+.news{display:grid;border-top:1px solid var(--line)}
+.news-row{
+  display:grid;grid-template-columns:104px 1fr auto;
+  gap:16px 26px;align-items:center;
+  padding:22px 6px;border-bottom:1px solid var(--line);
+}
+/* Baris berita hanya bisa diklik kalau memang punya tujuan (misalnya tautan
+   ke postingan Instagram). Kalau tidak ada, barisnya jadi daftar biasa —
+   jangan pernah diarahkan ke "#" atau "#kontak", pengunjung jadi tersesat. */
+a.news-row{text-decoration:none;transition:background .16s var(--ease),padding-left .16s var(--ease)}
+a.news-row:hover{background:var(--surface);padding-left:16px}
+/* Kabar sekolah: hanya 4 baris terbaru yang tampil, sisanya dibuka oleh tombol
+   "Lihat semua". MENAMBAH BERITA BARU: sisipkan satu <div class="news-row">
+   — atau <a class="news-row" href="..."> kalau beritanya punya tautan —
+   di urutan paling atas daftar, sisanya beres otomatis. */
+.news .news-row:nth-child(n+5){display:none}
+.news.is-open .news-row:nth-child(n+5){display:grid}
+.news-row time{font-size:.8rem;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.news-row h3{font-size:1.02rem;font-weight:700}
+.news-row p{font-size:.88rem;color:var(--muted);margin-top:5px}
+.tag{
+  display:inline-block;padding:5px 12px;border-radius:var(--r-pill);
+  font-size:.74rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  background:var(--surface-2);color:var(--teal-deep);white-space:nowrap;
+}
+.tag--brand{background:var(--brand-soft);color:var(--brand-ink)}
+.tag--green{background:var(--green-soft);color:var(--green-ink)}
+.tag--gold{background:var(--gold-soft);color:var(--gold-ink)}
+@media (max-width:720px){
+  .news-row{grid-template-columns:1fr;gap:10px}
+  .news-row .tag{justify-self:start}
+}
+
+/* =========================================================================
+   12. TESTIMONI
+   ========================================================================= */
+/* ---------------------------------------------------------------------------
+   TESTIMONI — TIDAK TERPAKAI SAAT INI.
+   Bagian testimoni dihapus dari index.html karena isinya masih contoh
+   karangan (lihat komentar kepala index.html). Gaya di bawah sengaja
+   disimpan supaya gampang dipasang lagi nanti. ISI HANYA DENGAN
+   TESTIMONI ASLI, dan minta izin orangnya dulu sebelum menulis namanya.
+   --------------------------------------------------------------------------- */
+.testi{background:var(--surface)}
+.tcards{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.2vw,24px)}
+.tcard{
+  background:#fff;border-radius:var(--r-lg);padding:26px 24px 24px;
+  border:1px solid var(--line);box-shadow:var(--shadow-sm);
+  display:flex;flex-direction:column;gap:18px;
+}
+.tcard__who{display:flex;align-items:center;gap:12px}
+.avatar{
+  width:46px;height:46px;border-radius:50%;flex:none;
+  display:grid;place-items:center;background:var(--surface-2);color:var(--teal-deep);
+  font-weight:800;font-size:.92rem;letter-spacing:-.02em;
+}
+.tcard:nth-child(2) .avatar{background:var(--brand-soft);color:var(--brand-ink)}
+.tcard:nth-child(3) .avatar{background:var(--green-soft);color:var(--green-ink)}
+.tcard__who b{display:block;font-size:.92rem;font-weight:800;letter-spacing:-.015em}
+.tcard__who small{display:block;font-size:.79rem;color:var(--muted);font-weight:600;margin-top:2px}
+.tcard blockquote{margin:0;font-size:.97rem;color:var(--ink-2);line-height:1.62}
+@media (max-width:900px){.tcards{grid-template-columns:1fr}}
+
+/* =========================================================================
+   13. CTA
+   ========================================================================= */
+.cta{padding-block:clamp(40px,5vw,72px)}
+.cta-mark{text-align:center;margin-bottom:clamp(16px,2vw,26px);position:relative;z-index:2;
+  font-weight:800;letter-spacing:-.045em;line-height:.9;font-size:clamp(2.4rem,6.4vw,5rem)}
+.cta-mark b{color:var(--brand-deep);font-weight:800}
+.band{
+  position:relative;background:var(--teal-deep);color:#fff;
+  border-radius:64px;padding:clamp(52px,6vw,76px) clamp(26px,4vw,64px) clamp(34px,4vw,56px);
+  display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,4vw,56px);align-items:center;
+  overflow:hidden;
+}
+.band::after{
+  content:"";position:absolute;right:-90px;bottom:-120px;width:340px;height:340px;border-radius:50%;
+  background:rgba(255,255,255,.09);
+}
+.band__in{position:relative;z-index:1}
+.band h2{font-size:clamp(1.9rem,4vw,3.1rem);color:#fff}
+.band p{color:rgba(255,255,255,.86);margin-top:16px;max-width:44ch}
+.band .btn-row{margin-top:28px}
+.contact-card{
+  position:relative;z-index:1;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);border-radius:var(--r-lg);
+  padding:22px;display:grid;gap:2px;
+}
+.contact-card a, .contact-card div{
+  display:grid;grid-template-columns:30px 1fr;gap:14px;align-items:start;
+  padding:13px 4px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.16);
+}
+.contact-card > *:last-child{border-bottom:0}
+.contact-card .i{width:22px;height:22px;opacity:.9;margin-top:1px}
+.contact-card b{display:block;font-size:.88rem;font-weight:800;color:#fff}
+.contact-card span{display:block;font-size:.84rem;color:#fff;line-height:1.45}
+/* catatan: teks di kartu ini putih penuh. Hierarki dibentuk oleh bobot huruf
+   dan ukuran, bukan oleh transparansi — putih 85% hanya mencapai 3,9:1. */
+@media (max-width:900px){
+  .band{grid-template-columns:1fr;border-radius:44px}
+}
+
+/* =========================================================================
+   14. FOOTER
+   ========================================================================= */
+.foot{border-top:1px solid var(--line);padding-block:clamp(44px,5vw,64px) 0}
+.foot-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:clamp(28px,4vw,48px)}
+.foot-col h3{font-size:.78rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.foot-col li{margin-bottom:11px}
+.foot-col a{font-size:.9rem;font-weight:600;color:var(--ink-2);text-decoration:none}
+.foot-col a:hover{color:var(--brand-ink)}
+.foot-brand p{margin-top:16px;font-size:.88rem;color:var(--muted);max-width:34ch}
+/* Ikon sosial di footer — Instagram, YouTube, WhatsApp. Semuanya tautan asli
+   (bukan "#"). Ikon yang tidak menuju ke mana pun lebih buruk daripada tidak
+   ada, jadi hapus ikonnya kalau akunnya sudah tidak dipakai lagi. */
+.socials{display:flex;gap:10px;margin-top:20px}
+/* Tombol ini ada di DALAM .foot-col, jadi aturan tautan footer yang terlalu
+   lebar bisa menimpanya — pernah terjadi: ".foot-col a{display:block}"
+   (untuk area sentuh di layar kecil) mengubah display:grid jadi block,
+   ikonnya menempel ke kiri dan tidak lagi terpusat. Kalau menambah aturan
+   tautan di footer, batasi ke ".foot-col li a" saja. */
+.socials a{
+  width:44px;height:44px;border-radius:12px;border:1.5px solid var(--line-strong);
+  display:grid;place-items:center;color:var(--ink-2);
+  transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),transform .15s var(--ease);
+}
+.socials a:hover{background:var(--ink);border-color:var(--ink);color:#fff;transform:translateY(-2px)}
+.foot-bottom{
+  margin-top:clamp(34px,4vw,52px);border-top:1px solid var(--line);
+  padding:22px 0 26px;display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;
+  font-size:.83rem;color:var(--muted);font-weight:600;
+}
+.foot-bottom ul{display:flex;gap:20px;flex-wrap:wrap}
+.foot-bottom a{text-decoration:none}
+.foot-bottom a:hover{color:var(--brand-ink)}
+@media (max-width:900px){
+  .foot-grid{grid-template-columns:1fr 1fr}
+  /* target sentuh ≥44px di layar kecil */
+  .foot-col li{margin-bottom:0}
+  /* HANYA tautan di dalam daftar (<li>). Jangan dilebarkan jadi ".foot-col a":
+     tombol media sosial juga <a> di dalam .foot-col, dan aturan itu pernah
+     menimpa display:grid-nya jadi block sehingga ikonnya menempel ke kiri
+     (tidak terpusat). Lihat catatan di bagian .socials. */
+  .foot-col li a{display:block;padding:11px 0}
+  .foot-bottom a{display:inline-block;padding:12px 0}
+}
+@media (max-width:560px){.foot-grid{grid-template-columns:1fr}}
+
+/* =========================================================================
+   15. MOTION
+   ========================================================================= */
+/* Animasi muncul saat digulir.
+   PENTING: opacity:0 hanya berlaku kalau JavaScript hidup — kelas "js"
+   dipasang oleh skrip kecil di <head> tiap halaman. Kalau JS dimatikan,
+   diblokir, atau gagal dimuat, seluruh isi halaman tetap terlihat.
+   Tanpa pengaman ini, halaman jadi kosong melompong saat JS mati. */
+.reveal{transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.js .reveal{opacity:0;transform:translateY(16px)}
+.js .reveal.in{opacity:1;transform:none}
+.js .reveal[data-d="1"]{transition-delay:.07s}
+.js .reveal[data-d="2"]{transition-delay:.14s}
+.js .reveal[data-d="3"]{transition-delay:.21s}
+
+@media (prefers-reduced-motion:reduce){
+  html:focus-within{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .js .reveal{opacity:1;transform:none}
+  .rail{scroll-behavior:auto}
+}
+
+
+/* =========================================================================
+   HALAMAN PROFIL (profil.html)
+   Gaya khusus halaman profil: kepala halaman, visi & misi, direktori staf.
+   ========================================================================= */
+
+/* --- kepala halaman --- */
+.page-hero{padding:clamp(40px,6vw,74px) 0 clamp(30px,4vw,48px)}
+.page-hero--surface{background:var(--surface);border-bottom:1px solid var(--line)}
+.page-hero h1{font-size:clamp(1.9rem,4.2vw,3rem);font-weight:800;letter-spacing:-.035em;line-height:1.1;margin-top:14px}
+.page-hero .lede{margin-top:18px;max-width:62ch}
+.crumb{font-size:.82rem;font-weight:600;color:var(--muted);display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.crumb a{color:var(--muted);text-decoration:none;display:inline-block;padding:12px 6px;margin:-12px -6px}
+.crumb a:hover{color:var(--brand-ink)}
+.crumb i{font-style:normal;color:var(--line-strong)}
+
+/* --- label "Visi" / "Misi" --- */
+.blok-label{font-size:.8rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--brand-ink);margin-bottom:14px}
+.visi-box .blok-label{color:var(--gold-ink);margin-bottom:16px}
+
+/* --- visi --- */
+.visi-box{background:var(--gold-soft);border-radius:44px 44px 132px 44px;padding:clamp(28px,4vw,48px)}
+.visi-box blockquote{font-size:clamp(1.12rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-.02em;line-height:1.42;color:var(--ink)}
+.visi-box blockquote em{font-style:normal;color:var(--gold-ink)}
+
+/* --- misi ---
+   4 butir misi (bukan 6) dan kalimatnya panjang, jadi dua kolom saja —
+   lebih lega dibaca daripada dipaksa tiga kolom. */
+.misi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,20px)}
+.misi-card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-md);padding:clamp(20px,2.4vw,26px)}
+.misi-card .no{display:inline-block;font-size:1.15rem;font-weight:800;letter-spacing:-.03em;color:var(--brand-ink);margin-bottom:10px}
+.misi-card p{font-size:.93rem;color:var(--ink-2)}
+
+/* --- direktori guru & staf --- */
+.staf-head{display:flex;flex-wrap:wrap;gap:18px 28px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(22px,3.2vw,34px)}
+.pencarian{position:relative;min-width:min(330px,100%);max-width:420px}
+.pencarian input{width:100%;font:inherit;font-size:.92rem;padding:13px 16px 13px 44px;
+  border:1.5px solid var(--line-strong);border-radius:var(--r-pill);background:var(--paper);color:var(--ink)}
+.pencarian input:focus{outline:2px solid var(--brand-btn);outline-offset:1px;border-color:var(--brand-btn)}
+.pencarian svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--muted);pointer-events:none}
+
+.staf-grup{margin-top:clamp(30px,4vw,46px)}
+.staf-grup:first-of-type{margin-top:0}
+.staf-grup__judul{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:clamp(18px,2.6vw,26px)}
+.staf-grup__judul h3{font-size:1.12rem;font-weight:800;letter-spacing:-.02em}
+.jumlah{font-size:.74rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--teal-deep);background:var(--teal-soft);padding:4px 11px;border-radius:var(--r-pill)}
+
+/* auto-fit, bukan angka tetap: kalau jumlah pimpinan berubah, kartunya
+   membagi rata sendiri dan tidak menyisakan kolom kosong di ujung. */
+.pim-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:clamp(14px,2vw,20px)}
+.pim-card{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--brand);
+  border-radius:var(--r-md);padding:clamp(20px,2.4vw,26px);text-align:center}
+.pim-card .ava{margin:0 auto 14px}
+.pim-card b{display:block;font-size:1rem;font-weight:800;letter-spacing:-.015em;line-height:1.3}
+.pim-card .peran{display:block;font-size:.84rem;color:var(--brand-ink);font-weight:700;margin-top:5px}
+.pim-card .mapel{display:block;font-size:.79rem;color:var(--muted);margin-top:6px}
+
+.staf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:14px}
+.staf-card{display:flex;align-items:center;gap:14px;background:var(--paper);
+  border:1px solid var(--line);border-radius:var(--r-md);padding:14px 16px}
+.staf-card b{display:block;font-size:.89rem;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+.staf-card .peran{display:block;font-size:.78rem;color:var(--muted);margin-top:3px}
+.staf-card .tambahan{display:block;font-size:.73rem;color:var(--teal-deep);font-weight:700;margin-top:4px}
+
+/* PENTING — jangan hapus baris ini.
+   Atribut `hidden` bawaan browser hanya berlaku kalau tidak ada CSS yang
+   menyetel `display`. .staf-card memakai display:flex, jadi tanpa aturan di
+   bawah ini kartu yang seharusnya disembunyikan saat mencari TETAP TAMPIL —
+   pencariannya kelihatan seperti tidak berfungsi. Aturan ini menegaskannya
+   dengan tingkat kekhususan yang lebih tinggi.
+   Kesalahan yang sama pernah terjadi di .rbtn dan .link-more. */
+.staf-card[hidden],.pim-card[hidden],.staf-grup[hidden],.news-row[hidden]{display:none}
+
+/* avatar inisial — warnanya diputar dari palet logo, tidak pakai foto */
+.ava{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;
+  background:var(--c,var(--brand-btn));color:#fff;font-size:.85rem;font-weight:800;letter-spacing:.01em}
+.ava--lg{width:60px;height:60px;border-radius:20px;font-size:1.15rem}
+
+.kosong{color:var(--muted);font-size:.93rem;padding:30px 4px;font-style:italic;display:none}
+.kosong.tampil{display:block}
+
+@media (max-width:900px){
+  .pim-grid{grid-template-columns:repeat(2,1fr)}
+  .misi-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .pim-grid,.misi-grid{grid-template-columns:1fr}
+  .staf-grid{grid-template-columns:1fr}
+}
+
+/* =========================================================================
+   HALAMAN KEBIJAKAN (kebijakan.html)
+   Naskah panjang: kebijakan privasi & syarat penggunaan. Di halaman ini
+   yang penting bukan hiasan, tapi lebar baris yang nyaman dibaca (±74
+   huruf), jarak antar bagian, dan penanda butir yang jelas.
+   ========================================================================= */
+
+/* baris kecil di bawah judul: tanggal berlaku & versi naskah */
+.dok-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px}
+.dok-meta span{display:inline-flex;align-items:center;gap:8px;font-size:.83rem;font-weight:700;color:var(--muted)}
+.dok-meta .i{width:17px;height:17px;stroke-width:2;color:var(--brand-ink)}
+
+/* daftar isi singkat di kepala halaman (memakai .chip yang sudah ada) */
+.dok-nav{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+
+/* --- isi naskah --- */
+/* max-width dalam satuan huruf (ch), bukan piksel: lebar baris tetap enak
+   dibaca walau ukuran hurufnya ikut membesar di layar lebar. */
+.dok{max-width:74ch}
+.dok > h2{font-size:clamp(1.5rem,2.9vw,2.05rem)}
+.dok-lead{margin-top:16px;font-size:clamp(.98rem,1.3vw,1.06rem);color:var(--muted)}
+.dok h3{margin-top:clamp(26px,3.2vw,36px);font-size:clamp(1.02rem,1.5vw,1.14rem);font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.dok p{margin-top:12px;font-size:.96rem;color:var(--ink-2)}
+.dok b{font-weight:800;color:var(--ink)}
+.dok ul{margin-top:12px;display:grid;gap:10px}
+.dok li{position:relative;padding-left:25px;font-size:.96rem;color:var(--ink-2)}
+/* penanda butir berupa titik — dibuat dengan CSS supaya daftar tetap
+   terbaca kalau gaya dimatikan (browser jatuh ke butir bawaan) */
+.dok li::before{content:"";position:absolute;left:7px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--brand-ink)}
+.dok a{color:var(--brand-ink);font-weight:600}
+.dok a:hover{color:var(--ink)}
+
+/* kotak "ringkasnya": isi pokok naskah, supaya yang tidak membaca sampai
+   habis tetap tahu intinya */
+.dok-ringkas{margin-top:clamp(20px,2.8vw,28px);background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);padding:clamp(20px,2.6vw,28px)}
+.dok-ringkas .blok-label{margin-bottom:8px}
+.dok-ringkas ul{margin-top:6px}
+.dok-ringkas li::before{background:var(--teal-deep)}
+
+/* catatan menyempil (mis. dasar hukum) */
+.dok-kotak{margin-top:20px;border-left:4px solid var(--brand);padding:2px 0 2px 18px}
+.dok-kotak p{margin-top:0;font-size:.93rem}
+
+/* penutup naskah: versi & tanggal berlaku */
+.dok-versi{margin-top:clamp(24px,3vw,32px);padding-top:18px;border-top:1px solid var(--line);font-size:.83rem;font-weight:700;color:var(--muted)}

@@ -1,0 +1,400 @@
+<!doctype html>
+<!--
+  ============================================================================
+  HALAMAN KEBIJAKAN — SMA NEGERI 1 BATI-BATI
+  Dua naskah dalam satu halaman:
+      #privasi  → Kebijakan privasi
+      #syarat   → Syarat penggunaan
+  Tautan ke kedua bagian ini dipasang di BILAH BAWAH KAKI HALAMAN index.html
+  dan profil.html. Jangan ditaruh di menu navbar — navbar hanya memuat
+  bagian di beranda + satu halaman terpisah (Profil) yang sudah disepakati.
+
+  Gaya (warna, huruf, bentuk) ada di assets/style.css — dipakai bersama
+  index.html dan profil.html; halaman ini yang ketiga. Jangan menyalin CSS
+  ke dalam berkas ini.
+
+  ---------------------------------------------------------------------------
+  NASKAH INI DITULIS DENGAN MENYEBUT KEADAAN SITUS APA ADANYA. Fakta yang
+  dijadikan dasar (sudah diperiksa langsung di berkas situs ini):
+    · tidak ada formulir, akun/login, cookie, alat analitik, atau iklan;
+    · tidak ada skrip pihak ketiga — satu-satunya permintaan ke luar adalah
+      berkas huruf Plus Jakarta Sans dari fonts.googleapis.com (lihat <link>
+      di <head> ketiga halaman);
+    · halaman Profil hanya memuat nama, gelar, dan jabatan guru/staf
+      (NIK, NIP/NUPTK, tempat & tanggal lahir tidak pernah ikut);
+    · tiga gambar yang terpasang saat ini adalah ILUSTRASI, bukan foto asli.
+
+  Kalau salah satu fakta itu berubah, naskah ini WAJIB ikut diperbarui —
+  bukan sekadar dilengkapi. Bagian yang paling mudah jadi bohong:
+  butir "tidak memakai alat analitik" (kalau nanti dipasang statistik) dan
+  butir "huruf diambil dari Google" (kalau fontnya nanti disimpan sendiri).
+
+  ---------------------------------------------------------------------------
+  KEPUTUSAN SEKOLAH — sudah diterapkan di dalam naskah (dikonfirmasi
+  20 September 2026). Tidak ada lagi yang perlu diisi:
+  1. TANGGAL BERLAKU: 1 Juli 2026. Ada di TIGA tempat — .dok-meta di kepala
+     halaman, dan .dok-versi di penutup kedua naskah. Kalau berubah, ubah
+     ketiganya sekaligus.
+  2. PENGESAHAN: "Ditetapkan oleh Kepala Sekolah SMA Negeri 1 Bati-bati pada
+     1 Juli 2026" — tanggalnya disamakan dengan tanggal berlaku. Nama kepala
+     sekolah sengaja TIDAK ditulis; tambahkan sendiri di .dok-versi kalau
+     naskahnya nanti ditandatangani.
+  3. DUA JANJI PELAYANAN — disetujui sekolah:
+       a. menurunkan foto bila orang tua/wali dari siswa yang tampak di foto
+          memintanya → Kebijakan privasi, bagian "Gambar dan foto";
+       b. mengubah atau menghapus data guru bila ada mutasi, penambahan, atau
+          permintaan yang bersangkutan → bagian "Data pribadi yang tampil".
+     Keduanya JANJI yang harus benar-benar dilayani. Kalau suatu saat sekolah
+     tidak sanggup, hapus butirnya dari naskah — lebih baik tidak menjanjikan
+     daripada menjanjikan lalu tidak dijalankan.
+  4. EMAIL: sman1bati.bati@gmail.com — dipakai di bagian 1, bagian 8, dan kaki
+     halaman. Sejak 20 September 2026 alamat ini dipakai di SELURUH situs
+     (beranda, profil, kebijakan, termasuk data terstruktur untuk Google),
+     menggantikan info@sman1batibati.sch.id yang sempat terpasang.
+
+  ATURAN TAUTAN (sama seperti halaman lain): JANGAN pernah memakai href="#".
+  Semua tautan di halaman ini sudah menuju tujuan yang benar-benar ada.
+  ============================================================================
+-->
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Menandai bahwa JavaScript hidup. CSS memakai ini: animasi "muncul saat
+     digulir" hanya disembunyikan kalau kelas ini ada. Kalau JS mati, seluruh
+     isi halaman tetap terlihat. -->
+<script>document.documentElement.className+=" js";</script>
+<title>Kebijakan Privasi &amp; Syarat Penggunaan — SMA Negeri 1 Bati-bati</title>
+<meta name="description" content="Kebijakan privasi dan syarat penggunaan situs SMA Negeri 1 Bati-bati: apa yang dilakukan (dan tidak dilakukan) terhadap data pengunjung, serta aturan memakai isi situs ini.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kebijakan Privasi &amp; Syarat Penggunaan — SMA Negeri 1 Bati-bati">
+<meta property="og:description" content="Ditulis dengan bahasa sehari-hari: situs ini tidak memungut data pengunjung, dan cara memakai isinya.">
+<meta property="og:image" content="assets/og-image.png">
+<link rel="icon" href="assets/favicon-64.png" sizes="64x64">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body id="top">
+
+<a class="skip" href="#konten">Lewati ke konten utama</a>
+
+<header class="site-head" id="head">
+  <div class="wrap head-in">
+    <a class="brand" href="index.html" aria-label="SMA Negeri 1 Bati-bati — beranda">
+      <img class="brand__logo" src="assets/logo-sman1-batibati.png" alt="" width="39" height="48">
+      <span class="brand__text"><b>SMA Negeri 1</b><span>Bati-bati</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Navigasi utama">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#program">Akademik</a></li>
+        <li><a href="index.html#prestasi">Berita</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+        <li class="nav-lain"><a href="profil.html">Profil</a></li>
+      </ul>
+    </nav>
+
+    <div class="head-act">
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Buka menu">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="mnav" id="mnav">
+    <div class="wrap">
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="index.html#program">Akademik</a></li>
+        <li><a href="index.html#prestasi">Berita</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+        <li><a href="profil.html">Profil</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="konten">
+
+  <!-- ===================== KEPALA HALAMAN ===================== -->
+  <div class="page-hero page-hero--surface">
+    <div class="wrap">
+      <nav class="crumb" aria-label="Remah roti">
+        <a href="index.html">Beranda</a><i aria-hidden="true">/</i><span>Kebijakan privasi &amp; syarat penggunaan</span>
+      </nav>
+      <span class="eyebrow">Keterbukaan</span>
+      <h1>Kebijakan privasi &amp; syarat penggunaan</h1>
+      <p class="lede">Dua naskah yang berlaku untuk situs ini: apa yang kami lakukan — dan tidak lakukan — terhadap data pengunjung, serta aturan memakai isi situs. Keduanya ditulis dengan bahasa sehari-hari supaya bisa dibaca siapa saja, bukan hanya orang hukum.</p>
+
+      <p class="dok-meta">
+        <span>
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="3"/><path d="M3 9.5h18M8 3v3M16 3v3"/></svg>
+          Berlaku sejak <b>1 Juli 2026</b>
+        </span>
+        <span>
+          <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l7 3v5.2c0 4-2.9 7.6-7 8.8-4.1-1.2-7-4.8-7-8.8V6.5l7-3Z"/><path d="M9.3 12.2l1.9 1.9 3.6-3.7"/></svg>
+          Versi <b>1.0</b>
+        </span>
+      </p>
+      <!-- TANGGAL BERLAKU: 1 Juli 2026 (keputusan sekolah, dikonfirmasi
+           20 September 2026). Ada di TIGA tempat — baris ini dan .dok-versi
+           di penutup kedua naskah. Kalau berubah, ubah ketiganya. -->
+    </div>
+  </div>
+
+  <!-- ===================== KEBIJAKAN PRIVASI ===================== -->
+  <section id="privasi" aria-labelledby="privasi-h">
+    <div class="wrap">
+      <div class="dok reveal">
+        <span class="eyebrow">Naskah pertama</span>
+        <h2 id="privasi-h">Kebijakan privasi</h2>
+        <p class="dok-lead">Situs ini dibuat untuk memberi informasi, bukan untuk mengumpulkan data. Bagian ini menjelaskan apa yang benar-benar terjadi pada data ketika kamu membuka halaman ini — termasuk hal-hal yang tidak terjadi.</p>
+
+        <div class="dok-ringkas">
+          <div class="blok-label">Ringkasnya</div>
+          <ul>
+            <li>Situs ini <b>tidak meminta kamu mengisi apa pun</b>. Tidak ada formulir, tidak ada pendaftaran, tidak ada akun.</li>
+            <li>Situs ini <b>tidak memasang cookie</b>, tidak memakai alat penghitung pengunjung, dan tidak menampilkan iklan.</li>
+            <li>Satu-satunya hubungan ke luar adalah pengambilan <b>berkas huruf (font) dari server Google</b>. Lewat permintaan itu, alamat IP kamu tercatat di Google — tidak pernah masuk ke kami.</li>
+            <li>Kalau kamu menghubungi sekolah lewat WhatsApp atau email, pesanmu kami pakai <b>hanya untuk menjawab</b>.</li>
+          </ul>
+        </div>
+
+        <h3>1. Siapa yang mengelola situs ini</h3>
+        <p>Situs ini dikelola oleh <b>SMA Negeri 1 Bati-bati</b>, sekolah menengah atas negeri di Jalan Ahmad Yani Km. 33,3, Desa Nusa Indah, Kecamatan Bati-bati, Kabupaten Tanah Laut, Kalimantan Selatan. Pertanyaan, koreksi, atau keberatan soal isi situs dan data bisa disampaikan lewat <a href="mailto:sman1bati.bati@gmail.com">sman1bati.bati@gmail.com</a> atau <a href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener">WhatsApp sekolah</a>.</p>
+
+        <h3>2. Data yang tidak kami kumpulkan</h3>
+        <p>Kami sengaja tidak memasang apa pun yang bisa mengenali pengunjung. Secara rinci, situs ini:</p>
+        <ul>
+          <li>tidak punya formulir, kolom komentar, atau halaman pendaftaran;</li>
+          <li>tidak punya akun, masuk (login), atau kata sandi;</li>
+          <li>tidak menyimpan cookie di peramban (browser) kamu;</li>
+          <li>tidak memakai alat analitik seperti Google Analytics, piksel pelacak, atau jaringan iklan;</li>
+          <li>tidak menyimpan riwayat kunjunganmu di server sekolah.</li>
+        </ul>
+        <p>Konsekuensinya sederhana: kami tidak tahu siapa yang membuka halaman ini, dari kota mana, dan halaman mana yang dibaca. Berapa pun banyaknya pengunjung, tidak ada catatan tentang dirimu.</p>
+
+        <h3>3. Satu layanan dari luar: berkas huruf</h3>
+        <p>Teks di situs ini memakai huruf <b>Plus Jakarta Sans</b> yang diambil langsung dari layanan Google Fonts. Saat halaman dibuka, perambanmu meminta berkas huruf itu ke server Google — dan sebagai konsekuensinya <b>alamat IP serta keterangan perambanmu tercatat di Google</b>.</p>
+        <p>Itu satu-satunya permintaan ke pihak luar ketika kamu hanya membaca halaman ini. Tidak ada data yang kemudian mengalir dari Google ke sekolah. Aturan Google atas data tersebut ada dalam <a href="https://policies.google.com/privacy?hl=id" target="_blank" rel="noopener">kebijakan privasi Google</a>.</p>
+
+        <h3>4. Kalau kamu menghubungi kami</h3>
+        <p>Tautan WhatsApp dan alamat email di halaman <a href="index.html#kontak">Kontak</a> adalah kanal resmi sekolah. Kalau kamu memakainya, data yang kamu kirim — nama, nomor, alamat email, dan isi pesan — tersimpan di layanan yang kamu pakai (WhatsApp atau penyedia email) dan di perangkat petugas yang menjawab.</p>
+        <p>Data itu kami pakai <b>hanya untuk menjawab pertanyaanmu</b>. Kami tidak menjual, menyewakan, atau membagikannya ke pihak lain, dan tidak memakai nomormu untuk mengirim promosi. Karena pesan masuk dan keluar tercatat di layanan WhatsApp atau email yang bersangkutan, ketentuan privasi layanan itu juga berlaku untuk percakapan tersebut.</p>
+
+        <h3>5. Tautan ke layanan lain</h3>
+        <p>Di kaki halaman ada tautan ke Instagram dan YouTube sekolah, serta tombol WhatsApp. Begitu kamu mengetuk salah satunya, kamu berada di layanan milik pihak lain dan tunduk pada aturan layanan itu, bukan pada naskah ini. Instagram dan WhatsApp dijalankan Meta, YouTube dijalankan Google. Kami tidak menerima data apa pun dari kunjunganmu di sana.</p>
+
+        <h3>6. Data pribadi yang tampil di situs ini</h3>
+        <p>Halaman <a href="profil.html#guru-staf">Guru &amp; tenaga kependidikan</a> memuat direktori 55 orang. Yang ditampilkan hanya <b>nama, gelar, dan jabatan</b>. Kolom identitas seperti <b>NIK, NIP, NUPTK, tempat dan tanggal lahir tidak diikutkan</b> — tidak pernah ada di berkas situs ini, bukan sekadar tidak ditampilkan di halaman.</p>
+        <p>Data siswa tidak dipublikasikan sama sekali: tidak ada nama, kelas, nilai, atau foto siswa di situs ini. Daftar guru dan tenaga kependidikan itu disusun dari keterangan sekolah, dan <b>diperbarui setiap kali ada mutasi, penambahan, atau perubahan tugas</b>. Guru maupun tenaga kependidikan yang namanya tercantum di sana dapat meminta namanya diubah atau dihapus dengan menghubungi sekolah.</p>
+
+        <h3>7. Gambar dan foto</h3>
+        <p>Gambar yang terpasang di situs ini saat ini adalah <b>ilustrasi</b>, bukan foto siswa atau guru tertentu. Karena itu keterangan gambarnya berbunyi “Ilustrasi…”, dan ilustrasinya memang bergaya gambar, bukan dibuat agar tampak seperti foto sungguhan.</p>
+        <p>Kalau nanti dipasang foto kegiatan asli yang menampilkan wajah siswa, foto itu dipakai semata-mata sebagai bagian dari pemberitaan kegiatan sekolah. <b>Sekolah bersedia menurunkan foto tersebut</b> bila orang tua atau wali dari siswa yang tampak di dalamnya memintanya — cukup menghubungi sekolah.</p>
+
+        <h3>8. Hakmu atas data pribadimu</h3>
+        <p>Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi memberi setiap orang hak untuk mengetahui, memperbaiki, dan meminta penghapusan data pribadinya, serta menarik persetujuan atas pemakaian data itu.</p>
+        <p>Karena situs ini tidak memungut data apa pun dari pengunjung, hak tersebut dalam praktiknya berlaku untuk dua hal: <b>data yang kamu kirim sendiri</b> lewat kanal kontak, dan <b>nama guru atau tenaga kependidikan</b> yang tampil di halaman Profil. Sampaikan permintaanmu lewat <a href="mailto:sman1bati.bati@gmail.com">sman1bati.bati@gmail.com</a> dengan menyebutkan data mana yang dimaksud, dan sekolah akan menindaklanjutinya.</p>
+        <div class="dok-kotak">
+          <p>Dasar hukumnya: <a href="https://peraturan.bpk.go.id/Details/229798/uu-no-27-tahun-2022" target="_blank" rel="noopener">UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi</a> (JDIH Badan Pemeriksa Keuangan).</p>
+        </div>
+
+        <h3>9. Kalau kebijakan ini berubah</h3>
+        <p>Kalau cara kerja situs ini berubah — misalnya nanti ada formulir pendaftaran daring atau alat penghitung pengunjung — naskah ini diperbarui lebih dulu, dan tanggal berlaku di halaman ini ikut berubah. Yang berlaku adalah versi yang sedang tayang di halaman ini, bukan salinan yang tersimpan di tempat lain.</p>
+
+        <p class="dok-versi">Kebijakan privasi · Versi 1.0 · berlaku sejak 1 Juli 2026<br>Ditetapkan oleh Kepala Sekolah SMA Negeri 1 Bati-bati pada 1 Juli 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SYARAT PENGGUNAAN ===================== -->
+  <section id="syarat" style="border-top:1px solid var(--line)" aria-labelledby="syarat-h">
+    <div class="wrap">
+      <div class="dok reveal">
+        <span class="eyebrow">Naskah kedua</span>
+        <h2 id="syarat-h">Syarat penggunaan</h2>
+        <p class="dok-lead">Aturan memakai isi situs ini. Ringkasnya: silakan dipakai dan dikutip untuk keperluan belajar atau pemberitaan dengan menyebut sumbernya, tapi jangan dipakai untuk menyesatkan orang.</p>
+
+        <div class="dok-ringkas">
+          <div class="blok-label">Ringkasnya</div>
+          <ul>
+            <li>Situs ini <b>kanal informasi resmi</b> SMA Negeri 1 Bati-bati.</li>
+            <li>Isinya <b>boleh dibaca dan dikutip</b> dengan menyebut sumbernya. Yang tidak boleh: dijual, diubah lalu diakui sebagai milik sendiri, atau dipakai untuk mengaku-aku sebagai pihak sekolah.</li>
+            <li>Informasi di sini bersifat <b>umum</b>. Kalau berbeda dengan pengumuman resmi sekolah yang bertanda tangan, <b>yang berlaku adalah pengumuman resmi itu</b>.</li>
+            <li>Sebagian gambar adalah <b>ilustrasi</b>, bukan dokumentasi kejadian tertentu.</li>
+          </ul>
+        </div>
+
+        <h3>1. Tentang situs ini</h3>
+        <p>Situs ini dikelola oleh SMA Negeri 1 Bati-bati sebagai kanal informasi sekolah: profil, mata pelajaran pilihan, ekstrakurikuler, fasilitas, kabar sekolah, dan kontak. Kanal resmi sekolah yang lain adalah akun Instagram dan kanal YouTube yang tertaut di kaki halaman, serta tautan WhatsApp dan alamat email di bagian Kontak. Selain itu bukan milik sekolah.</p>
+
+        <h3>2. Menyetujui syarat ini</h3>
+        <p>Dengan membuka dan memakai situs ini, kamu dianggap sudah membaca dan menyetujui syarat di bawah ini. Kalau tidak setuju, cukup hentikan pemakaiannya — tidak ada yang perlu kamu lakukan.</p>
+
+        <h3>3. Kebenaran dan kelengkapan informasi</h3>
+        <p>Kami berusaha menjaga isi situs ini benar dan mutakhir. Meski begitu, sebagian keterangan bersifat ringkas dan bisa berubah tanpa pemberitahuan lebih dulu: jumlah siswa, jumlah guru, jumlah ekstrakurikuler, jadwal kegiatan, susunan pimpinan, dan daftar mata pelajaran.</p>
+        <p>Angka dan daftar di situs ini <b>bukan dokumen resmi</b>. Kalau ada perbedaan antara isi situs ini dan pengumuman sekolah yang bertanda tangan atau berkop, <b>yang berlaku adalah pengumuman resmi tersebut</b>. Untuk keperluan yang menuntut ketepatan — melengkapi dokumen, mengajukan permohonan, melamar, atau urusan administrasi lain — mintakan keterangan langsung ke kantor sekolah.</p>
+
+        <h3>4. Hak atas isi situs</h3>
+        <p>Nama SMA Negeri 1 Bati-bati, logo sekolah, dan seluruh isi situs ini — teks, gambar, dan tata letaknya — dilindungi hak masing-masing pemiliknya. Yang <b>boleh</b> kamu lakukan:</p>
+        <ul>
+          <li>membaca dan menyimpan salinan untuk keperluan pribadi;</li>
+          <li>mengutip sebagian isinya untuk keperluan pendidikan, penelitian, atau pemberitaan, dengan menyebut sumbernya (cukup tulis nama sekolah dan alamat situs ini);</li>
+          <li>membagikan tautan halaman ini ke orang lain.</li>
+        </ul>
+        <p>Yang <b>tidak boleh</b>: menjual isinya, mengubahnya lalu mengakuinya sebagai milik sendiri, atau memakai nama dan logo sekolah untuk barang atau kegiatan yang tidak ada hubungannya dengan sekolah.</p>
+
+        <h3>5. Yang tidak boleh dilakukan</h3>
+        <ul>
+          <li>Memakai nama atau logo sekolah untuk mengaku sebagai perwakilan sekolah, atau untuk menawarkan sesuatu atas nama sekolah.</li>
+          <li>Menyalin seluruh isi situs secara massal dengan alat otomatis sampai membebani server.</li>
+          <li>Memakai kanal kontak untuk mengirim iklan, pesan massal, atau penipuan. Kanal itu hanya untuk urusan sekolah.</li>
+        </ul>
+
+        <h3>6. Tautan ke situs lain</h3>
+        <p>Beberapa tautan di halaman ini mengarah ke situs lain: Instagram, YouTube, WhatsApp, dan laman peraturan. Tautan itu kami pilih dengan hati-hati, tetapi isinya kami tidak kendalikan dan bisa berubah kapan saja. Saat kamu memakainya, syarat dan kebijakan privasi situs tersebutlah yang berlaku.</p>
+
+        <h3>7. Gambar ilustrasi</h3>
+        <p>Sebagian gambar di situs ini adalah <b>ilustrasi</b>, bukan dokumentasi kejadian tertentu, dan keterangan gambarnya sudah menuliskannya sebagai “Ilustrasi…”. Jangan memakainya sebagai bukti keadaan nyata atau jumlah tertentu di sekolah ini. Kalau kamu memerlukan foto dokumentasi resmi, mintakan ke sekolah.</p>
+
+        <h3>8. Batas tanggung jawab</h3>
+        <p>Kami berusaha agar situs ini benar, aman, dan selalu bisa dibuka. Namun kami tidak menjanjikan situs ini bebas dari kesalahan atau selalu tersedia — gangguan jaringan, pemeliharaan server, dan hal di luar kendali kami bisa terjadi.</p>
+        <p>Kami tidak bertanggung jawab atas kerugian yang timbul dari keputusan yang diambil semata-mata berdasarkan isi situs ini. Untuk keputusan yang penting, tetap konfirmasikan ke kantor sekolah.</p>
+
+        <h3>9. Perubahan syarat ini</h3>
+        <p>Syarat ini bisa berubah, misalnya kalau situs mendapat layanan baru. Yang berlaku adalah versi yang sedang tayang di halaman ini, dan tanggal berlakunya tertera di kepala halaman.</p>
+
+        <h3>10. Hukum yang berlaku</h3>
+        <p>Naskah ini diatur dan ditafsirkan menurut hukum Republik Indonesia.</p>
+
+        <p class="dok-versi">Syarat penggunaan · Versi 1.0 · berlaku sejak 1 Juli 2026<br>Ditetapkan oleh Kepala Sekolah SMA Negeri 1 Bati-bati pada 1 Juli 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== AJAKAN ===================== -->
+  <section aria-labelledby="ajak-h">
+    <div class="wrap" style="text-align:center;max-width:62ch;margin-inline:auto">
+      <span class="eyebrow" style="justify-content:center">Ada yang perlu dijelaskan?</span>
+      <h2 id="ajak-h" style="font-size:clamp(1.4rem,2.7vw,1.95rem);font-weight:800;letter-spacing:-.03em;margin-top:12px">Bingung di bagian mana? Tanyakan saja</h2>
+      <p class="lede" style="margin-inline:auto">Kalau ada bagian yang belum jelas, atau kamu ingin memakai isi situs ini untuk sesuatu yang tidak tercantum di atas, hubungi sekolah lebih dulu. Kami senang menjawabnya.</p>
+      <div class="btn-row" style="justify-content:center;margin-top:24px">
+        <a class="btn btn--primary" href="index.html#kontak">Lihat kontak sekolah</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col foot-brand">
+        <a class="brand" href="index.html" aria-label="SMA Negeri 1 Bati-bati — beranda">
+          <img class="brand__logo" src="assets/logo-sman1-batibati.png" alt="" width="39" height="48">
+          <span class="brand__text"><b>SMA Negeri 1</b><span>Bati-bati</span></span>
+        </a>
+        <p>Sekolah menengah atas negeri di Kecamatan Bati-bati, Kabupaten Tanah Laut, Kalimantan Selatan.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/sman1bati_bati" target="_blank" rel="noopener" aria-label="Instagram sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://www.youtube.com/@smabat_bungas" target="_blank" rel="noopener" aria-label="Kanal YouTube sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10.5 9.5l5 2.5-5 2.5v-5Z"/></svg></a>
+          <a href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener" aria-label="WhatsApp sekolah"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-8.6-6L3 21l6-1.4A9 9 0 0 0 12 21Z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h3>Jelajahi</h3>
+        <ul>
+          <li><a href="index.html#program">Mata pelajaran pilihan</a></li>
+          <li><a href="index.html#beasiswa">Info beasiswa (PIP)</a></li>
+          <li><a href="index.html#ekskul">Ekstrakurikuler</a></li>
+          <li><a href="index.html#tahap">Tahapan belajar</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Tentang</h3>
+        <ul>
+          <li><a href="profil.html">Visi &amp; misi</a></li>
+          <li><a href="profil.html#guru-staf">Guru &amp; tenaga kependidikan</a></li>
+          <li><a href="index.html#fasilitas">Sarana prasarana</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h3>Hubungi</h3>
+        <ul>
+          <li><a href="https://wa.me/message/DO777VAL4T66P1" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:sman1bati.bati@gmail.com">sman1bati.bati@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <p>© <span id="yr">2026</span> SMA Negeri 1 Bati-bati. Seluruh hak cipta dilindungi.</p>
+      <ul>
+        <li><a href="#privasi">Kebijakan privasi</a></li>
+        <li><a href="#syarat">Syarat penggunaan</a></li>
+        <li><a href="index.html#kontak">Kontak</a></li>
+        <li><a href="#top">Kembali ke atas</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---- tahun berjalan ---- */
+  var yr = document.getElementById("yr");
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---- menu mobile ---- */
+  var burger = document.getElementById("burger");
+  var mnav = document.getElementById("mnav");
+  if (burger && mnav) {
+    var tutup = function () {
+      mnav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded", "false");
+      burger.setAttribute("aria-label", "Buka menu");
+    };
+    burger.addEventListener("click", function () {
+      var terbuka = mnav.classList.toggle("is-open");
+      burger.setAttribute("aria-expanded", terbuka ? "true" : "false");
+      burger.setAttribute("aria-label", terbuka ? "Tutup menu" : "Buka menu");
+    });
+    mnav.addEventListener("click", function (e) {
+      if (e.target.closest("a")) tutup();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && mnav.classList.contains("is-open")) {
+        tutup();
+        burger.focus();
+      }
+    });
+  }
+
+  /* ---- animasi muncul saat digulir ---- */
+  var blok = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window) {
+    var amat = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("in"); amat.unobserve(en.target); }
+      });
+    }, { rootMargin: "0px 0px -60px 0px", threshold: 0.06 });
+    blok.forEach(function (b) { amat.observe(b); });
+  } else {
+    blok.forEach(function (b) { b.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>
